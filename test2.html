@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Title</title>
+</head>
+<body>
+    <div id="root"></div>
+    <!--    React核心库，与宿主环境无关-->
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <!--    依赖核心库，将核心功能与页面结合-->
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+        // JS的扩展语法，需要使用babel进行转义。JSX简化了test1中的写法
+        // var span = React.createElement('span', {}, '一个span元素');
+        // var span = <span>一个span元素</span> //这句不能识别，babel将该句转换为上面的写法
+
+        // var h1 = React.createElement('h1', {
+        //     title: '第一个react元素'
+        // }, 'hello world', span);
+        var h1 = <h1 title="第一个react元素">hello world <span>一个span元素11</span></h1>
+        ReactDOM.render(h1, document.getElementById("root"));//在root元素中渲染元素h1，将普通的js对象变成dom对象
+    </script>
+</body>
+</html>
