@@ -1,0 +1,7 @@
+使用脚手架搭建工程
+官方 create-react-app
+第三方 next.js umijs
+
+yarn create react-app react-learn
+
+凡事使用jsx的地方都要引用react，要吧语法<h1>hello world <span>span元素</span></h1>转化为 React.createElement创建一个React元素
