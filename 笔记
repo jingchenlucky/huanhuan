@@ -1,4 +1,0 @@
-jsx本质是一个js对象，会被babel编译，最终转换为React.createElement
-每个Jsx表达式，有且仅有一个跟节点
-每个JSX元素必须结束（规范）
-33333333ddddd
