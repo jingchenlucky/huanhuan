@@ -1,48 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import src1 from './assets/1.jpg';
-import src2 from './assets/2.jpg';
-import src3 from './assets/3.jpg';
-import './index.css';
+import MyFuncComp from './MyFuncComp';
+import MyClassComp from './MyClassComp';
 
-const srcs = [src1, src2, src3];
+// function MyFuncComp() {
+//     return <h1>组件内容1</h1>
+// }
+const comp = <MyFuncComp/>;
 
-let index = 2;
-
-let timer;
-
-const container = document.getElementById('root');
-
-//渲染页面
-function render() {
-    ReactDOM.render(
-        <img src={srcs[index]}/>,
-        container
-    );
-}
-
-// 根据index来切换图片
-function start() {
-    stop();
-    timer = setInterval(() => {
-        console.log(index);
-        index = (index + 1) % 3;
-        render();
-    }, 1000)
-
-}
-
-function stop() {
-    clearInterval(timer);
-}
-
-render();
-start();
-// 鼠标移入定时器停止，鼠标移除定时器开始
-container.onmouseenter = function () {
-    stop();
-}
-container.onmouseleave = function () {
-    start();
-}
-
+ReactDOM.render(
+    <div>
+        {/*{comp}*/}
+        <MyFuncComp number="1"/>
+        <MyFuncComp number={2}/>
+        <MyFuncComp number={3}/>
+        <MyFuncComp number={4}/>
+        <MyFuncComp/>
+        <MyClassComp a="123" enable/>
+        <MyClassComp a={21} obj={{
+            name:'cj',
+            age:100
+        }}/>
+        <MyClassComp a={22} ui={<h2>这是我传递属性</h2>}/>
+        <MyClassComp a={23}/>
+        <MyClassComp/>
+    </div>,
+    document.getElementById('root'));
