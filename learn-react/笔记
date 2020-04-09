@@ -1,0 +1,21 @@
+#事件
+
+在react中，组件的事件，本质上是一个属性
+按照之前react对组件对约定，由于事件本质上是一个属性，因此耶需要使用小驼峰命名
+
+给组件Tick写onclick函数不会主动触发，只是将onClick穿插给组件；
+如果给button写onClick函数会被触发，因为button相当于内置组件，会被自动触发
+
+**如果没有特殊处理，在事件处理函数中，this指向为undefined**
+ <Tick onOver={()=>{
+                    this.setState({
+                        isOver:true
+                    })
+                }} number={10}/>
+以上这样写this不会有问题，this指向外层对对象.若箭头函数过于复杂，写在行内不方便,提出来
+方法1：bind    this.handleOnOver=this.handleOnOver.bind(this);
+方法2：箭头函数handleOnOver
+让handleover函数不在原型上，在对象上
+
+
+
