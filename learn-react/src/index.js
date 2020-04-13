@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Comp from './Comp';
 
-ReactDOM.render(<PageTest/>, document.getElementById('root'))
+ReactDOM.render(<Comp/>, document.getElementById('root'))
 
