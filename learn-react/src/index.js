@@ -1,11 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Pager from './components/Pager';
+import PageTest from './components/PageTest';
 
-ReactDOM.render(<Pager
-    current={12}
-    total={100}
-    limit={9}
-    panelNumber={5}
-/>, document.getElementById('root'))
+ReactDOM.render(<PageTest/>, document.getElementById('root'))
 
