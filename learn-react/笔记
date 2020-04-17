@@ -13,5 +13,23 @@ React <16.0.0
     (1)返回一个虚拟Dom，会被挂载到虚拟Dom树中，最终渲染到页面到真实Dom中
     (2)render可能不只运行一次，只要重新渲染，就会重新运行（父组件render被调用，子组件也会调用）
     (3)严禁使用setState，因为可能会导致无限递归渲染（setState会执行render,render再调用setState，无限循环）
+4componentDidMount
+    (1)只会执行一次
+    (2)可以使用setState
+    (3)通常情况下，会将网络请求，启动定时器等一开始需要的操作，书写到函数中
+5组件进入活跃状态
+6.componentWillReceiveProps
+    (1)即将接受新的参数
+    (2)参数为新的属性对象
+    (3)该函数会导致一些bug,所以不推荐使用
+7.**shouldComponentUpdate**
+    （1）指示React是否需要更新渲染该组件，通过true false来指定
+    （2）默认情况下直接返回true
+8. componentWillUpdate
+   1. 组件即将被重新渲染
+9. componentDidUpdate
+   1.  往往在该函数中使用dom操作，改变元素
+10. **componentWillUnmount**
+    1.  通常在该函数中销毁一些组件依赖的资源，比如计时器
 新版生命周期
 React >16.0.0
