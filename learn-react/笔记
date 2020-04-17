@@ -1,0 +1,17 @@
+#生命周期
+** 生命周期仅存在于类组件中，函数组件每次调用都是重新运行函数，旧的组件即可被销毁
+
+旧版生命周期
+React <16.0.0
+1 constructor
+    (1)同一个组件只能被创建一次
+    (2)不能在第一次挂载到页面之前，调用setState，构造函数中严禁使用setState(不能在construtor里调用setState,除非是写在setIntreval里面 )
+2 componentWillMount
+    (1)正常情况下，和构造函数一样，只会被运行一次
+    (2)可以使用setState，但是为了避免bug，禁止使用。因为在某种情况下，会执行多次
+3 render
+    (1)返回一个虚拟Dom，会被挂载到虚拟Dom树中，最终渲染到页面到真实Dom中
+    (2)render可能不只运行一次，只要重新渲染，就会重新运行（父组件render被调用，子组件也会调用）
+    (3)严禁使用setState，因为可能会导致无限递归渲染（setState会执行render,render再调用setState，无限循环）
+新版生命周期
+React >16.0.0
