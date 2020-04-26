@@ -1,29 +1,19 @@
 import React, {Component} from 'react';
-import OldLifeCycle from './OldLifeCycle'
+import Test from './Teat'
 
 class App extends Component {
-    state = {
-        number: 1,
-        show: true
+    state={
+        number:1
     }
-
     render() {
-        const comp = this.state.show ? <OldLifeCycle n={this.state.number}/> : null;
         return (
             <div>
-                {comp}
-                <button onClick={() => {
-                    this.setState(state => ({
-                        number: state.number + 1
-                    }))
-                }}>n加1
-                </button>
-                <button onClick={() => {
-                    this.setState(state => ({
-                        show: !this.state.show
-                    }))
-                }}>显示隐藏
-                </button>
+                <Test n={this.state.number}/>
+                <button onClick={()=>{
+                    this.setState({
+                        number:this.state.number+1
+                    })
+                }}>父组件加1</button>
             </div>
         );
     }
