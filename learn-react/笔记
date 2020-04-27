@@ -4,8 +4,8 @@
 旧版生命周期
 React <16.0.0
 1 constructor
-    (1)同一个组件只能被创建一次
-    (2)不能在第一次挂载到页面之前，调用setState，构造函数中严禁使用setState(不能在construtor里调用setState,除非是写在setIntreval里面 )
+    (1)同一个组件对象 只能被创建一次
+    (2)不能在第一次挂载到页面之前，调用setState，构造函数中严禁使用setState(不能在construtor里调用setState,除非是写在异步setIntreval里面，这个时候已经挂载结束 )
 2 componentWillMount
     (1)正常情况下，和构造函数一样，只会被运行一次
     (2)可以使用setState，但是为了避免bug，禁止使用。因为在某种情况下，会执行多次
@@ -27,7 +27,7 @@ React <16.0.0
     （2）默认情况下直接返回true
 8. componentWillUpdate
    1. 组件即将被重新渲染
-9. componentDidUpdate
+9. componentDidUpdate（获取到之前的prevProps, prevState）
    1.  往往在该函数中使用dom操作，改变元素
 10. **componentWillUnmount**
     1.  通常在该函数中销毁一些组件依赖的资源，比如计时器
