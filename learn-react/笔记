@@ -1,1 +1,7 @@
 传递元素内容
+
+内置组件：div p button h1
+
+如果父组件给自定义组件传递传递元素内容，则react会将元素内容作为children属性传递过去
+ReactDOM.render(<Comp><p>123456789</p></Comp>, document.getElementById('root'))相当于：
+ReactDOM.render(<Comp children={<p>123456789</p>}></Comp>, document.getElementById('root'))
