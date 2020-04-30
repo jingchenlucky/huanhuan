@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Modal from './common/Modal';
+import Modal from './components/common/Modal';
 
 class Test extends Component {
     state = {
