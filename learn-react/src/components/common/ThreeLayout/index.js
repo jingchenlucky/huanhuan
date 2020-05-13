@@ -9,7 +9,7 @@ function ThreeLayout(props) {
         gap:0
     }
     const datas = Object.assign({}, deafultProps, props);
-
+    console.log(props);
     return (
         <div className='three-layout' style={{
             minWidth: datas.minWidth
