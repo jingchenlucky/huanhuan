@@ -1,7 +1,13 @@
-传递元素内容
+#表单（默认情况下是 非受控组件）
 
-内置组件：div p button h1
+受控组件和非受控组件
 
-如果父组件给自定义组件传递传递元素内容，则react会将元素内容作为children属性传递过去
-ReactDOM.render(<Comp><p>123456789</p></Comp>, document.getElementById('root'))相当于：
-ReactDOM.render(<Comp children={<p>123456789</p>}></Comp>, document.getElementById('root'))
+受控组件：组件的使用者，有能力完全控制该组件的行为和内容。通常情况下，受控组件；往往没有自身的状态，其内容完全受到属性的控制（类似于函数组件）
+非受控组件：组件的使用者，没有能力控制组件的行为和内容，组件的行为和内容完全自行控制
+
+表单组件（input/单双选框等）默认是非受控组件，一旦设置了表单组件的value属性，则其变为了受控组件，单多选框需要设置checked值，才为受控组件。受控组件之后要写onchange方便，监听变化并改变状态，直接从状态中那到值即可
+
+
+FormTest.js是对App.copy.js中的代码封装和精简
+后者每个表单元素的onchange事件都要重写，非常麻烦；现将事件全部集成到getChooseBoxs里（给每个元素设置name和val通[name]:val的方式进行对状态对重新赋值）
+其中多选框的val是一个数组，所以要分开处理

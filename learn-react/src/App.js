@@ -1,33 +1,12 @@
-import React from 'react';
-import ThreeLayout from './components/common/ThreeLayout';
+import React, {Component} from 'react';
+import FormTest from './components/FormTest'
 
-function App(props) {
-    return (
-        <div>
-            <ThreeLayout
-                gap={50}
-                left={
-                    <div style={{border: '1px solid blue'}
-                    }>
-                        左边栏
-                    </div>
-                }
-                right={
-                    <div style={{border: '1px solid blue'}
-                    }>
-                        右边栏
-                    </div>
-                }
-            >
-                <div style={{
-                    border: '1px solid red'
-                }}>
-                    <h1>主区域</h1>
-                    <p>121425435</p>
-                </div>
-            </ThreeLayout>
-        </div>
-    );
+class App extends Component {
+    state = {}
+
+    render() {
+        return <FormTest/>
+    }
 }
 
 export default App;
