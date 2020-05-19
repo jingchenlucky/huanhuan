@@ -13,4 +13,6 @@ datas=[
 ]
 
 2.name:每一个多选框的name属性
+3.chooseDatas:数组，表示当前选中的values
+4.onChange:当选中项发生改变时的事件，传递给父组件，让其更新选中项chooseDatas
 
