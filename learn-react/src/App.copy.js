@@ -35,25 +35,6 @@ class App extends Component {
             </label>
         ))
 
-        const radioFun = this.state.radioFunChoose.map(i => (
-            <div key={i}>
-                <input type="radio"
-                       checked={this.state.radioFunChoosed === i}
-                       onChange={e => {
-                           console.log(e.target.value, i);
-                           if (e.target.value === 'on') {
-                               this.setState(
-                                   {
-                                       radioFunChoosed: i
-                                   }
-                               )
-                           }
-                       }}
-                />
-                <label>{i}</label>
-            </div>
-
-        ));
         return (
             <div>
                 <input type="text" value={this.state.val} onChange={(e) => {
@@ -96,13 +77,6 @@ class App extends Component {
                     console.log(this.state.setVal);
                 }}>获取下拉框到值
                 </button>
-
-                {/*单选框*/}
-                {radioFun}
-                {/*<input type="radio" name="killOrder" value="1"/>*/}
-                {/*<label >是</label>*/}
-                {/*<input type="radio" name="killOrder" value="0" checked/>*/}
-                {/*<label >否</label>*/}
             </div>
         );
     }
