@@ -13,6 +13,7 @@ class App extends Component {
     }
 
     render() {
+        //多选
         const checkboxs = this.state.loves.map(it => (
             <label key={it}>
                 <input
@@ -34,26 +35,6 @@ class App extends Component {
                 />{it}
             </label>
         ))
-
-        const radioFun = this.state.radioFunChoose.map(i => (
-            <div key={i}>
-                <input type="radio"
-                       checked={this.state.radioFunChoosed === i}
-                       onChange={e => {
-                           console.log(e.target.value, i);
-                           if (e.target.value === 'on') {
-                               this.setState(
-                                   {
-                                       radioFunChoosed: i
-                                   }
-                               )
-                           }
-                       }}
-                />
-                <label>{i}</label>
-            </div>
-
-        ));
         return (
             <div>
                 <input type="text" value={this.state.val} onChange={(e) => {
@@ -97,12 +78,6 @@ class App extends Component {
                 }}>获取下拉框到值
                 </button>
 
-                {/*单选框*/}
-                {radioFun}
-                {/*<input type="radio" name="killOrder" value="1"/>*/}
-                {/*<label >是</label>*/}
-                {/*<input type="radio" name="killOrder" value="0" checked/>*/}
-                {/*<label >否</label>*/}
             </div>
         );
     }
