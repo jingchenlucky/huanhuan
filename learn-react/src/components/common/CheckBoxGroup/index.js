@@ -1,20 +1,21 @@
 import React, {Component} from 'react';
 
 class CheckBoxGroup extends Component {
-    handleChange=e=>{
+    handleChange = e => {
         let newArr;
-        if(e.target.checked){
-            newArr=[...this.props.chooseDatas,it.value]
-        }else{
-            newArr=this.props.chooseDatas.filter(it=>it.value!==e.target.value)
+        if (e.target.checked) {
+            newArr = [...this.props.chooseDatas, it.value]
+        } else {
+            newArr = this.props.chooseDatas.filter(it => it.value !== e.target.value)
         }
-        this.props.onChange&&this.props.onChange(newArr,this.props.name,e)
+        this.props.onChange && this.props.onChange(newArr, this.props.name, e)
     }
+
     /**
      * 得到一组多选框
      */
-    getCheckBoxes(){
-        this.props.datas.map(it=>{
+    getCheckBoxes() {
+        return this.props.datas.map(it => {
             <label key={it.value}>
                 <input
                     type="checkbox"
@@ -26,10 +27,12 @@ class CheckBoxGroup extends Component {
             </label>
         })
     }
+
     render() {
+        const bs = this.getCheckBoxes();
         return (
             <div>
-
+                {bs}
             </div>
         );
     }
