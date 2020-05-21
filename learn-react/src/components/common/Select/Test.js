@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import CheckBoxGroup from './index';
+import Select from './index';
 import {getAllStudents} from '../../../services/student'
 
 class Test extends Component {
@@ -9,13 +9,13 @@ class Test extends Component {
             // {value: "basketball", text: '篮球'},
             // {value: "movie", text: '电影'}
         ],
-        chooseDatas: ["football"]
+        value: ''//选中项
     }
 
     async componentDidMount() {
         const stus = await getAllStudents();
         this.setState({
-            datas:stus.map(it=>({value:it.id.toString(),text:it.name}))
+            datas: stus.map(it => ({value: it.id.toString(), text: it.name}))
         })
     }
 
@@ -23,12 +23,12 @@ class Test extends Component {
     render() {
         return (
             <div>
-                <CheckBoxGroup
+                <Select
                     name="loves"
                     {...this.state}
-                    onChange={newArr => {
+                    onChange={val => {
                         this.setState({
-                            chooseDatas: newArr
+                            value: val
                         })
                     }}
                 />
