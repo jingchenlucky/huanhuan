@@ -10,6 +10,8 @@ import withLogin from './HOC/withLogin'
 // const LoginA=withLogin(A);
 // const LoginB=withLogin(B);
 
+
+//高阶组件的嵌套使用
 let AComp = withLogin(A);
 AComp = withLog(AComp);
 let BComp = withLogin(B);
