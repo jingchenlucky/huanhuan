@@ -15,10 +15,9 @@ class Test extends Component {
     async componentDidMount() {
         const stus = await getAllStudents();
         this.setState({
-            datas:stus.map(it=>({value:it.id.toString(),text:it.name}))
+            datas: stus.map(it => ({value: it.id.toString(), text: it.name}))
         })
     }
-
 
     render() {
         return (
