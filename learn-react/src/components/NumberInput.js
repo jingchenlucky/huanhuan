@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-
 class NumberInput extends Component {
     state={
         val:''
