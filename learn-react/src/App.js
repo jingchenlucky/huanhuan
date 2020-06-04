@@ -1,29 +1,38 @@
 import React, {Component} from 'react';
+import {A, B} from './components/Comps';
 
-class A extends React.Component {
-    render() {
-        return (
-            <h1 ref={this.props.abc}>组件A{this.props.words}</h1>
-        )
-    }
-}
+import withLog from './HOC/withLog';
 
-//传递函数组件A得到新的组件，类似于高阶组件
-const NewA = React.forwardRef((props, ref) => {
-    return <A {...props} abc={ref}></A>
-});
+// const LogA=withLog(A);
+// const LogB=withLog(B);
+
+import withLogin from './HOC/withLogin'
+// const LoginA=withLogin(A);
+// const LoginB=withLogin(B);
+
+
+//高阶组件的嵌套使用
+let AComp = withLogin(A);
+AComp = withLog(AComp);
+let BComp = withLogin(B);
+BComp = withLog(BComp);
 
 class App extends Component {
-    ARef = React.createRef();//ref创建成对象
-
-    componentDidMount() {
-        console.log(this.ARef);
-    }
 
     render() {
+
         return (
             <div>
-                <NewA ref={this.ARef} words="3324433"/>
+                {/*打印日志的高阶组件*/}
+                {/*<LogA a={123}/>*/}
+                {/*<LogB b={321}/>*/}
+
+                {/*判断登陆的高阶组件*/}
+                {/*<LoginA a={123} login/>*/}
+                {/*<LoginB b={123} />*/}
+
+                <AComp a={123} login/>
+                <BComp b={321}/>
             </div>
         );
     }
