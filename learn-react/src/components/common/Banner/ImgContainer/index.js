@@ -14,6 +14,7 @@ class ImgContainer extends Component {
         this.div = el;//把dom对象放进div变量里保存
     }
 
+
     /**
      * 切换到第几张图片
      * 调用该组件，此组件会经过一段动画完成切换
