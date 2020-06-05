@@ -8,7 +8,7 @@ import React from 'react';
 
 export default function withLog(Comp) {
     // console.log(111111,props);
-    return class LogWrapper extends React.Component {
+    class LogWrapper extends React.Component {
 
         componentDidMount() {
             console.log(`日志：组件${Comp.name}被创建了，创建时间${Date.now()}`);
@@ -19,9 +19,15 @@ export default function withLog(Comp) {
         }
 
         render() {
-            console.log(this.props);
-            return <Comp {...this.props}/>
+            //abc代表要转发的ref{current:null}
+            const {abc, ...rest} = this.props;
+            return <Comp {...rest} ref={abc}/>
         }
     }
+
+    return React.forwardRef((props, ref) => {
+        return <LogWrapper {...props} abc={ref}/>
+    })
+
 }
 
