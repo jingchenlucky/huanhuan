@@ -1,24 +1,11 @@
 import React, {Component} from 'react';
-import {A,} from './components/Comps';
-
-import withLog from './HOC/withLog';
-
-//高阶组件的嵌套使用
-let AComp = withLog(A);
+import OldContext from './OldContext';
 
 class App extends Component {
-    myRef=React.createRef();
-
-    componentDidMount() {
-        console.log(this.myRef);
-    }
-
-
     render() {
-
         return (
             <div>
-                <AComp a={123} login ref={this.myRef}/>
+                <OldContext/>
             </div>
         );
     }
