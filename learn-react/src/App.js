@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import OldContext from './OldContext';
+// import OldContext from './OldContext';
+import NewContext from './NewContext';
 
 class App extends Component {
     render() {
         return (
             <div>
-                <OldContext/>
+                <NewContext/>
             </div>
         );
     }

@@ -7,19 +7,30 @@ const types = {
     onChangeA: PropTypes.func
 }
 
-function ChildA(props, context) {
-    return <div>
-        <h1>ChildA文本</h1>
-        <h2>a:{context.a},a:{context.b}</h2>
-        <ChildB/>
-    </div>
-}
+class ChildA extends React.Component {
+    static contextTypes = types;
 
-/**
- *函数组件中 声明需要使用哪些上下文中的数据
- * @returns {*}
- */
-ChildA.contextTypes = types;
+//此时childAI自己创建一个上下文
+    static childContextTypes = {
+        a: PropTypes.number,
+        c: PropTypes.string.isRequired
+    };
+
+    getChildContext() {
+        return {
+            a: 8888,
+            c: 'aaaaa'
+        }
+    }
+
+    render() {
+        return <div>
+            <h1>ChildA文本</h1>
+            <h2>a:{this.context.a},b:{this.context.b}</h2>
+            <ChildB/>
+        </div>
+    }
+}
 
 
 class ChildB extends React.Component {
@@ -29,8 +40,9 @@ class ChildB extends React.Component {
      * @returns {*}
      */
     static contextTypes = {
-        a: types.a,
-        onChangeA: PropTypes.func
+        ...types,
+        c: PropTypes.string
+
     }
 
     // constructor(props, context) {
@@ -40,7 +52,7 @@ class ChildB extends React.Component {
 
     render() {
         return <p>
-            ChildB文本 a:{this.context.a}
+            ChildB文本 a:{this.context.a} c:{this.context.c}
             <button onClick={() => {
                 this.context.onChangeA(this.context.a + 2)
             }}>B组件让a+2
@@ -53,7 +65,7 @@ class OldContext extends Component {
     static childContextTypes = types;
     state = {
         a: 123,
-        b: "werwer"
+        b: "tttttt"
     }
 
     // 得到上下文中的数据
