@@ -1,13 +1,12 @@
 import React, {Component} from 'react';
-// import OldContext from './OldContext';
-// import NewContext from './NewContext';
-import Test from './components/common/Form/Test'
+import TaskContainer from './components/TaskContainer'
 
 class App extends Component {
     render() {
+        console.log('App Render');
         return (
             <div>
-                <Test/>
+                <TaskContainer/>
             </div>
         );
     }
