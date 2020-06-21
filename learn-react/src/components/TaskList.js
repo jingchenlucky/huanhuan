@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import Task from './Task';
 
-export default class TaskList extends Component {
+export default class TaskList extends PureComponent {
     static propTypes = {
         tasks: PropTypes.arrayOf(PropTypes.shape({
             name: PropTypes.string.isRequired,

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import TaskList from './TaskList';
+import AddTask from './AddTask';
 
 class TaskContainer extends Component {
     state = {
@@ -19,10 +20,18 @@ class TaskContainer extends Component {
         })
     }
 
+    handleAdd = newTask => {
+        this.setState({
+            tasks: [...this.state.tasks, newTask]
+        })
+    }
+
     render() {
         console.log("TaskContainer Render,数组长度：", this.state.tasks.length);
         return (
             <div>
+                <AddTask
+                    onAdd={this.handleAdd}/>
                 <TaskList tasks={this.state.tasks}/>
             </div>
         );
