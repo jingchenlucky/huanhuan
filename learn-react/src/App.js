@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import TaskContainer from './components/TaskContainer'
+import Test from './components/Test';
 
 class App extends Component {
     render() {
         console.log('App Render');
         return (
             <div>
-                <TaskContainer/>
+                <Test/>
             </div>
         );
     }
