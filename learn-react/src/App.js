@@ -1,49 +1,55 @@
-import ErrorBound from './components/common/ErrorBound';
 import React from 'react'
 
-function Comp1() {
-    return <div style={{
-        width: "90%",
-        height: 500,
-        border: "2px solid"
-    }}>
-        <h1>Comp1</h1>
-        <Comp2/>
-    </div>
+class Comp1 extends React.Component {
+    state = {}
+
+    constructor(props) {
+        super(props);
+        console.log(4, "Comp1 Constructor")
+    }
+
+    static getDerivedStateFromProps(props, state) {
+        console.log(5, "Comp1 getDerivedStateFromProps")
+        return null;
+    }
+
+    componentDidMount() {
+        console.log("b", "App componentDidMount")
+    }
+
+    render() {
+        console.log(6, "Comp1 render");
+        return (
+            <h1>Comp1</h1>
+        )
+    }
 }
 
-// function getDatas() {
-//     return;
-// }
+export default class App extends React.Component {
 
-function Comp2() {
-    return <div style={{
-        width: "70%",
-        height: "70%",
-        border: "2px solid"
-    }}>
-        <h1 onClick={() => {
-            throw new Error("点击时发生的错误 ");
-            console.log(12345678);
-        }}>Comp2</h1>
-    </div>
-}
+    state = {}
 
-function Comp3() {
-    return <div style={{
-        width: "90%",
-        height: 500,
-        border: "2px solid"
-    }}>
-        <h1>Comp3</h1>
-    </div>
-}
+    constructor(props) {
+        super(props);
+        console.log(1, "App Constructor")
+    }
 
-export default function App() {
-    return <div>
-        <ErrorBound>
-            <Comp1/>
-        </ErrorBound>
-        <Comp3/>
-    </div>
+    static getDerivedStateFromProps(props, state) {
+        console.log(2, "App getDerivedStateFromProps")
+        return null;
+    }
+
+    componentDidMount() {
+        console.log("a", "App componentDidMount")
+    }
+
+
+    render() {
+        console.log(3, "App render");
+        return (
+            <div>
+                <Comp1/>
+            </div>
+        )
+    }
 }
