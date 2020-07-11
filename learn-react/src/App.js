@@ -1,49 +1,29 @@
-import ErrorBound from './components/common/ErrorBound';
-import React from 'react'
+import React from 'react';
 
-function Comp1() {
-    return <div style={{
-        width: "90%",
-        height: 500,
-        border: "2px solid"
-    }}>
-        <h1>Comp1</h1>
-        <Comp2/>
-    </div>
+var prev;
+
+function App(props) {
+    return (
+        <div onClick={(e) => {
+            console.log(e === prev);
+            console.log("React:Div被点击了")
+        }}>
+            <button onClick={(e) => {
+                prev = e;
+                console.log("react:按钮被点击了");
+                // e.stopPropagation();
+                console.log("React中的事件参数e是一个合成的事件对象", e);
+                console.log("e.nativeEvent可以拿到真实的事件对象", e.nativeEvent);
+            }}>按钮
+            </button>
+        </div>
+    );
 }
 
-// function getDatas() {
-//     return;
-// }
-
-function Comp2() {
-    return <div style={{
-        width: "70%",
-        height: "70%",
-        border: "2px solid"
-    }}>
-        <h1 onClick={() => {
-            throw new Error("点击时发生的错误 ");
-            console.log(12345678);
-        }}>Comp2</h1>
-    </div>
+export default App;
+document.querySelector('#root').onclick = function (e) {
+    console.log("真实的dom事件，id为root的div被点击了");
+    // e.stopPropagation();
 }
 
-function Comp3() {
-    return <div style={{
-        width: "90%",
-        height: 500,
-        border: "2px solid"
-    }}>
-        <h1>Comp3</h1>
-    </div>
-}
 
-export default function App() {
-    return <div>
-        <ErrorBound>
-            <Comp1/>
-        </ErrorBound>
-        <Comp3/>
-    </div>
-}
