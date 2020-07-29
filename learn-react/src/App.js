@@ -20,7 +20,7 @@ class App extends Component {
     state = {
         stuList: []
     }
-    loadStudnets = async () => {
+    loadStudents = async () => {
         const stus = await getAllStudents();
         this.setState({stuList: stus});
     }
@@ -28,7 +28,7 @@ class App extends Component {
     render() {
         return (
             <div>
-                <button onClick={this.loadStudnets}>加载学生数据</button>
+                <button onClick={this.loadStudents}>加载学生数据</button>
                 <button onClick={() => {
                     this.setState({stuList: []})
                 }}>清空学生数据
