@@ -1,55 +1,86 @@
-import React from 'react'
+import React, {Component} from 'react'
 
-class Comp1 extends React.Component {
-    state = {}
-
-    constructor(props) {
-        super(props);
-        console.log(4, "Comp1 Constructor")
-    }
-
-    static getDerivedStateFromProps(props, state) {
-        console.log(5, "Comp1 getDerivedStateFromProps")
-        return null;
-    }
-
+class CompA extends Component {
     componentDidMount() {
-        console.log("b", "App componentDidMount")
+        console.log("CompA 新组件挂载")
+    }
+
+    componentWillUnmount() {
+        console.log("CompA 卸载")
     }
 
     render() {
-        console.log(6, "Comp1 render");
-        return (
-            <h1>Comp1</h1>
-        )
+        console.log("CompA render")
+        return <CompAA/>
     }
 }
 
-export default class App extends React.Component {
-
-    state = {}
-
-    constructor(props) {
-        super(props);
-        console.log(1, "App Constructor")
+class CompAA extends Component {
+    componentDidMount() {
+        console.log("CompAA 新组件挂载")
     }
 
-    static getDerivedStateFromProps(props, state) {
-        console.log(2, "App getDerivedStateFromProps")
+    componentWillUnmount() {
+        console.log("CompAA 卸载")
+    }
+
+    render() {
+        console.log("CompAA render")
         return null;
     }
+}
 
+class CompB extends Component {
     componentDidMount() {
-        console.log("a", "App componentDidMount")
+        console.log("CompB 新组件挂载")
+    }
+
+    componentWillUnmount() {
+        console.log("CompB 卸载")
+    }
+
+    render() {
+        console.log("CompB render")
+        return <CompBB/>
+    }
+}
+
+class CompBB extends Component {
+    componentDidMount() {
+        console.log("CompBB 新组件挂载")
+    }
+
+    componentWillUnmount() {
+        console.log("CompBB 卸载")
+    }
+
+    render() {
+        console.log("CompBB render")
+        return null;
+    }
+}
+
+
+export default class App extends Component {
+    state = {
+        n: 0
     }
 
 
     render() {
-        console.log(3, "App render");
+        if (this.state.n === 0) {
+            return <div>
+                <CompB/>
+                <button onClick={() => {
+                    this.setState({
+                        n: 1
+                    })
+                }}>点击
+                </button>
+            </div>;
+        }
         return (
-            <div>
-                <Comp1/>
-            </div>
+            <CompA/>
         )
     }
 }
