@@ -1,86 +1,46 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
+import {getAllStudents} from './services/student';
 
-class CompA extends Component {
-    componentDidMount() {
-        console.log("CompA 新组件挂载")
-    }
-
-    componentWillUnmount() {
-        console.log("CompA 卸载")
-    }
+class StudentList extends Component {
 
     render() {
-        console.log("CompA render")
-        return <CompAA/>
+        const stus = this.props.stuList.map(it => <Student name={it.name} key={it.id}/>);
+        return <ul>{stus}</ul>
     }
 }
 
-class CompAA extends Component {
-    componentDidMount() {
-        console.log("CompAA 新组件挂载")
-    }
-
-    componentWillUnmount() {
-        console.log("CompAA 卸载")
-    }
-
+class Student extends Component {
     render() {
-        console.log("CompAA render")
-        return null;
+        return (< li> {this.props.name} </li>)
+
     }
 }
 
-class CompB extends Component {
-    componentDidMount() {
-        console.log("CompB 新组件挂载")
-    }
-
-    componentWillUnmount() {
-        console.log("CompB 卸载")
-    }
-
-    render() {
-        console.log("CompB render")
-        return <CompBB/>
-    }
-}
-
-class CompBB extends Component {
-    componentDidMount() {
-        console.log("CompBB 新组件挂载")
-    }
-
-    componentWillUnmount() {
-        console.log("CompBB 卸载")
-    }
-
-    render() {
-        console.log("CompBB render")
-        return null;
-    }
-}
-
-
-export default class App extends Component {
+class App extends Component {
     state = {
-        n: 0
+        stuList: []
     }
-
+    loadStudnets = async () => {
+        const stus = await getAllStudents();
+        this.setState({stuList: stus});
+    }
 
     render() {
-        if (this.state.n === 0) {
-            return <div>
-                <CompB/>
-                <button onClick={() => {
-                    this.setState({
-                        n: 1
-                    })
-                }}>点击
-                </button>
-            </div>;
-        }
         return (
-            <CompA/>
-        )
+            <div>
+                <button onClick={this.loadStudnets}>加载学生数据</button>
+                <button onClick={() => {
+                    this.setState({stuList: []})
+                }}>清空学生数据
+                </button>
+                <button onClick={() => {
+                    this.setState({stuList: this.state.stuList.sort(() => Math.random() - 0.5)})
+                }}>打乱顺序
+                </button>
+                <StudentList stuList={this.state.stuList}/>
+            </div>
+        );
     }
 }
+
+export default App;
