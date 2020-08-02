@@ -1,46 +1,34 @@
-import React, {Component} from 'react';
-import {getAllStudents} from './services/student';
+import React, {useState} from 'react';
 
-class StudentList extends Component {
+function App() {
+    const [n, setN] = useState(0);
+    const [visible, setVisible] = useState(true);
+    console.log("渲染");
+    return (
+        <div>
+            <p style={{display: visible ? 'block' : 'none'}}>
 
-    render() {
-        const stus = this.props.stuList.map(it => <Student name={it.name} key={it.id}/>);
-        return <ul>{stus}</ul>
-    }
-}
-
-class Student extends Component {
-    render() {
-        return (< li> {this.props.name} </li>)
-
-    }
-}
-
-class App extends Component {
-    state = {
-        stuList: []
-    }
-    loadStudents = async () => {
-        const stus = await getAllStudents();
-        this.setState({stuList: stus});
-    }
-
-    render() {
-        return (
-            <div>
-                <button onClick={this.loadStudents}>加载学生数据</button>
                 <button onClick={() => {
-                    this.setState({stuList: []})
-                }}>清空学生数据
+                    setN(n - 1);//不会立即改变，事件运行完之后一起改变
+                    setN(n - 1);//此时，n依然是0;
+                }}>-
                 </button>
+                <span>{n}</span>
                 <button onClick={() => {
-                    this.setState({stuList: this.state.stuList.sort(() => Math.random() - 0.5)})
-                }}>打乱顺序
+                    setN(prevN => prevN + 1);
+                    setN(prevN => prevN + 1);
+                }}>+
                 </button>
-                <StudentList stuList={this.state.stuList}/>
-            </div>
-        );
-    }
+            </p>
+            <button onClick={() => {
+                setVisible(!visible);
+            }}>显示/隐藏
+            </button>
+
+        </div>
+
+    );
 }
+
 
 export default App;
