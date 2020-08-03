@@ -1,30 +1,36 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+
+function Test() {
+    useEffect(() => {
+        console.log("副作用函数，仅渲染时执行一次");
+        return (() => {
+            console.log("清理函数，仅卸载时执行一次");
+        })
+    },[])//使用空数组作为依赖，则副作用只在挂载的时候运行一次。第二次渲染的时候，还是空数组，会认为没有改变
+    console.log("移动函数222,异步的，会先于useEffect运行");
+    const [, forceUpdate] = useState({});
+    return (
+        <h1>Test组件
+            <button onClick={() => {
+                forceUpdate({})
+            }}>刷新组件</button>
+        </h1>
+
+    );
+}
 
 function App() {
-    const [n, setN] = useState(0);
+    const [point, setPoint] = useState({x: 100, y: 100});
     const [visible, setVisible] = useState(true);
-    console.log("渲染");
+    const txtX = React.createRef();
+    const txtY = React.createRef();
     return (
-        <div>
-            <p style={{display: visible ? 'block' : 'none'}}>
-
-                <button onClick={() => {
-                    setN(n - 1);//不会立即改变，事件运行完之后一起改变
-                    setN(n - 1);//此时，n依然是0;
-                }}>-
-                </button>
-                <span>{n}</span>
-                <button onClick={() => {
-                    setN(prevN => prevN + 1);
-                    setN(prevN => prevN + 1);
-                }}>+
-                </button>
-            </p>
+        <div style={{paddingTop: 100}}>
+            {visible && <Test/>}
             <button onClick={() => {
                 setVisible(!visible);
             }}>显示/隐藏
             </button>
-
         </div>
 
     );
