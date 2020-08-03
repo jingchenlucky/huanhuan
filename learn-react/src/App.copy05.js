@@ -1,16 +1,12 @@
 import React, {useState, useEffect} from 'react';
 
 function App() {
-    const [x, setX] = useState(10);
+    const [x, setX] = useState(0);
     useEffect(() => {
-        if (x === 1) {
-            return;
-        }
-        //某一次渲染结束后，需要根据当前x的值，1秒后重新熏染
         setTimeout(() => {
-            setX(x - 1);
-        }, 1000)
-    }, [x]);
+           console.log(x);//x指向App函数调用时的x
+        }, 1000);
+    });
     return (
         <div>
             <span>{x}</span>
