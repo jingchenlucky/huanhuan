@@ -13,9 +13,10 @@ function StudentContainer(props) {
     useEffect(() => {
         (async function () {
             const resp = await getStudentsByPage(1, 10);
+            console.log("respresprespresp", resp);
             setStudents(resp.findByPage);
         })();
-    })
+    }, [])//空数组的目的是让该副作用函数没有任何依赖，从而仅在首次挂载时运行
     return (
         <div>
             <StudentList stu={students}/>
