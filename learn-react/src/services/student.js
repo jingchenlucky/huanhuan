@@ -18,5 +18,5 @@ export async function getAllStudents() {
  */
 export async function getStudentsByPage(page = 1, limit = 10) {
     return await fetch(`api/student/findByPage?appkey=${appkey}&page=${page}&size=${limit}`)
-        .then(resp=>resp.json()).then(resp=>resp.data)
+        .then(resp => resp.json()).then(resp => resp.data)
 }
