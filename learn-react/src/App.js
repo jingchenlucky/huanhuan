@@ -1,9 +1,17 @@
-import React from 'react';
+import React, {useContext} from 'react';
 
-function App(props) {
+const ctx = React.createContext();
+
+function Test() {
+    const value = useContext(ctx);//直接将上下文拿下来
+    return <h1>Test,上下文中的值：{value}</h1>
+}
+
+export default function App(props) {
     return (
-        <div></div>
+        <ctx.Provider value="abc21">
+            <Test/>
+        </ctx.Provider>
     );
 }
 
-export default App;
