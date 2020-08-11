@@ -1,18 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-const ctx = React.createContext();
-
-function Test() {
-    return <ctx.Consumer>
-        {value => <h1>Test,上下文中的值：{value}</h1>}
-    </ctx.Consumer>
+class Test extends React.PureComponent {
+    render() {
+        console.log("Test Render");
+        return <div>
+            <h1>{this.props.text}</h1>
+            <button onClick={this.props.onClick}>改变文本</button>
+        </div>
+    }
 }
 
-export default function App(props) {
+function Parent() {
+    const [txt, setTxt] = useState(123);
+    console.log("Parent Render");
+    return <Test text={txt} onClick={() => {
+        setTxt(Math.random())
+    }}/>
+}
+
+export default function App() {
     return (
-        <ctx.Provider value="abc">
-            <Test/>
-        </ctx.Provider>
+        <div>
+            <Parent/>
+        </div>
+
     );
 }
 
