@@ -1,25 +1,34 @@
-import React, {useState} from 'react';
-import useTimer from './myHook/useTimer';
+import React from 'react';
+import useReducer from './useReducer';
 
-function Test(props) {
-    console.log(111111);
-    useTimer(() => {
-        console.log("Test组件的一些副作用操作")
-    }, 1000);
-    return <h1>Test组件</h1>
+function reducer(state, action) {
+    switch (action.type) {
+        case 'increase':
+            return state + 2;
+        case "decrease":
+            if (state === 0) {
+                return 0;
+            }
+            return state - 2;
+        default:
+            return state;
+    }
 }
 
-function App(props) {
-    const [visible, setVisible] = useState(true);
+export default function App(props) {
+    const [n, dispatch] = useReducer(reducer, 0);
+
     return (
         <div>
-            {visible && <Test/>}
             <button onClick={() => {
-                setVisible(!visible)
-            }}>显示/隐藏</button>
+                dispatch({type: 'decrease'})
+            }}>-
+            </button>
+            <span>{n}</span>
+            <button onClick={() => {
+                dispatch({type: 'increase'})
+            }}>+
+            </button>
         </div>
-
     );
 }
-
-export default App;

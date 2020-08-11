@@ -1,51 +1,48 @@
-import React from 'react';
-import {getAllStudents} from './services/student';
+import React, {useState} from 'react';
 
-function withAllStudents(Comp) {
-    return class AllStudentwrapper extends React.Component {
-        state = {
-            stus: []
-        }
+function reducer(state, action) {
+    switch (action.type) {
+        case 'increase':
+            return state + 2;
+        case "decrease":
+            if (state === 0) {
+                return 0;
+            }
+            return state - 2;
+        default:
+            return state;
+    }
+}
 
-        async componentDidMount() {
-            const stus = await getAllStudents();
-            this.setState({
-                stus
-            });
-        }
+/**
+ * 自定义hook,用于抽离数据处理
+ */
+function useReducer() {
+    const [n, setN] = useState(0);
 
-        render() {
-            console.log(this.props);
-            return (
-                <Comp {...this.props} stus={this.state.stus}>
-
-                </Comp>
-            );
-        }
+    function dispatch(action) {
+        const newN = reducer(n, action);
+        console.log(`日志，n的值从${n}->${newN}`);
+        setN(newN);
     }
 
+    return [n, dispatch]
 }
 
+export default function App(props) {
+    const [n, dispatch] = useReducer();
 
-function Test(props) {
-    const list = props.stus.map(it => (<li id={it.key}>{it.name}</li>))
-    return (<ul>
-        {list}
-    </ul>)
-}
-
-const TestStudents = withAllStudents(Test);
-
-function App() {
-    console.log("13436", TestStudents);
     return (
         <div>
-            <TestStudents/>
+            <button onClick={() => {
+                dispatch({type: 'decrease'})
+            }}>-
+            </button>
+            <span>{n}</span>
+            <button onClick={() => {
+                dispatch({type: 'increase'})
+            }}>+
+            </button>
         </div>
-        //
-    )
-
+    );
 }
-
-
-export default App;
