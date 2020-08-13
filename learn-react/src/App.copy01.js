@@ -1,40 +1,22 @@
-import React, {useMemo, useState} from 'react';
+import React, {useState, useRef} from 'react';
 
-class Test extends React.PureComponent {
-    render() {
-        console.log("Test Render");
-        return <div>
-            <h1>{this.props.text}</h1>
-            <button onClick={this.props.onClick}>改变文本</button>
-        </div>
-    }
-}
+window.arr = [];
 
-function Parent() {
-    const [txt, setTxt] = useState(123);
+export default function App(props) {
+    console.log("render");
+    const inpRef = useRef();
     const [n, setN] = useState(0);
-    console.log("Parent Render");
-    const handleClick = useMemo(() => {
-        return () => {
-            setTxt(txt + 1);
-        }
-    }, [txt])
+    window.arr.push(inpRef);
     return (
         <div>
-            <Test text={txt} onClick={handleClick}/>
+            <input type="text" ref={inpRef}/>
+            <button onClick={() => {
+                console.log(inpRef.current.value);
+            }}>得到input的值
+            </button>
             <input type="number" value={n} onChange={e => {
-                setN(parseInt(e.target.value))
+                setN(e.target.value)
             }}/>
         </div>
-    )
-}
-
-export default function App() {
-    return (
-        <div>
-            <Parent/>
-        </div>
-
     );
 }
-
