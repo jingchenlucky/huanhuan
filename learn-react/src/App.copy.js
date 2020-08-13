@@ -1,23 +1,18 @@
-import React, {useRef} from 'react';
-
-class Test extends React.Component {
-    method() {
-        console.log("Test method called");
-    }
-
-    render() {
-        return <h1>Test Component</h1>
-    }
-}
+import React, {useState, useRef, useEffect} from 'react';
 
 export default function App() {
-    const testRef = useRef();
+    const [n, setN] = useState(0);
+    const h1Ref = useRef();
+    useEffect(() => {
+        h1Ref.current.innerText = Math.random().toFixed(2);
+    })
     return (
         <div>
-            <Test ref={testRef}/>
+            <h1 ref={h1Ref}>{n}</h1>
             <button onClick={() => {
-                testRef.current.method();
-            }}>点击调用Test组件的method方法
+                setN(n + 1)
+            }}>
+                +
             </button>
         </div>
     );
