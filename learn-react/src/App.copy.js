@@ -1,22 +1,24 @@
-import React, {useState} from 'react';
+import React, {useRef} from 'react';
 
-window.arr = [];
+class Test extends React.Component {
+    method() {
+        console.log("Test method called");
+    }
 
-export default function App(props) {
-    console.log("render");
-    const inpRef = React.createRef();
-    const [n, setN] = useState(0);
-    window.arr.push(inpRef);
+    render() {
+        return <h1>Test Component</h1>
+    }
+}
+
+export default function App() {
+    const testRef = useRef();
     return (
         <div>
-            <input type="text" ref={inpRef}/>
+            <Test ref={testRef}/>
             <button onClick={() => {
-                console.log(inpRef.current.value);
-            }}>得到input的值
+                testRef.current.method();
+            }}>点击调用Test组件的method方法
             </button>
-            <input type="number" value={n} onChange={e => {
-                setN(e.target.value)
-            }}/>
         </div>
     );
 }
