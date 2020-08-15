@@ -20,7 +20,7 @@ export default function App() {
     const [inProp, setInProp] = useState(false);
     return (
         <div>
-            <Transition in={inProp} timeout={duration} onEnter={()=>{console.log("Enter之前");}}>
+            <Transition in={inProp} timeout={duration} onEnter={()=>{console.log("Enter之前");}} >
             {state => {
             console.log(state);
             return <div className={state}>
