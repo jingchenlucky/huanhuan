@@ -1,21 +1,17 @@
 import React, {useState} from 'react';
-import {CSSTransition} from 'react-transition-group';
+import {CSSTransition, SwitchTransition} from "react-transition-group"
 import './App.css';
 
 export default function App(props) {
-    const [visible, setVisible] = useState(true);
+    const [show1, setShow1] = useState(true);
     return (
         <div>
-            <CSSTransition
-                appear
-                classNames="test" timeout={2000} in={visible}>
-                <h1>一个标题</h1>
-            </CSSTransition>
-            <button onClick={() => {
-                setVisible(!visible)
-            }}>按钮
-            </button>
+            <SwitchTransition mode="out-in">
+                <CSSTransition appear timeout={2000} key={show1}>
+                    <h1>{show1 ? "title1" : "title2"}</h1>
+                </CSSTransition>
+            </SwitchTransition>
+            <button onClick={() => setShow1(!show1)}>切换</button>
         </div>
     );
 }
-
