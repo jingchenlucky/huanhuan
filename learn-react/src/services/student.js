@@ -5,7 +5,7 @@ const appkey = 'huanhuan_1564064301241';
  * @returns {Promise<any>}
  */
 export async function getAllStudents() {
-    return await fetch("api/student/findAll?appkey=" + appkey)
+    return await fetch("http://open.duyiedu.com/api/student/findAll?appkey=" + appkey)
         .then(resp => resp.json()).then(resp => resp.data);
 
 }
@@ -17,6 +17,6 @@ export async function getAllStudents() {
  * @returns {Promise<any>}
  */
 export async function getStudentsByPage(page = 1, limit = 10) {
-    return await fetch(`api/student/findByPage?appkey=${appkey}&page=${page}&size=${limit}`)
-        .then(resp=>resp.json()).then(resp=>resp.data)
+    return await fetch(`http://open.duyiedu.com/api/student/findByPage?appkey=${appkey}&page=${page}&size=${limit}`)
+        .then(resp => resp.json()).then(resp => resp.data)
 }

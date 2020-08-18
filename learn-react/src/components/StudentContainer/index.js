@@ -19,7 +19,7 @@ function StudentContainer(props) {
     }, [])//空数组的目的是让该副作用函数没有任何依赖，从而仅在首次挂载时运行
     return (
         <div>
-            <StudentList stu={students}/>
+            <StudentList stus={students}/>
         </div>
     );
 }
