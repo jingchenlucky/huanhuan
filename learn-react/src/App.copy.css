@@ -1,0 +1,25 @@
+.test-enter {
+    opacity: 0;
+}
+
+.test-enter-active {
+    opacity: 1;
+    transition: 2s;
+}
+
+.test-enter-done {
+    color: green;
+}
+
+.test-exit {
+    opacity: 1;
+}
+
+.test-exit-active {
+    opacity: 0;
+    transition: 2s;
+}
+
+.test-exit-done {
+    opacity: 0;
+}

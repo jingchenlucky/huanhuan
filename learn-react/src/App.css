@@ -1,25 +1,19 @@
-.test-enter {
-    opacity: 0;
+.container {
+    width: 100px;
+    margin: 0 auto;
 }
 
-.test-enter-active {
-    opacity: 1;
-    transition: 2s;
+.comp-container {
+    height: 100px;
+    position: relative;
 }
 
-.test-enter-done {
-    color: green;
+.title {
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 
-.test-exit {
-    opacity: 1;
-}
-
-.test-exit-active {
-    opacity: 0;
-    transition: 2s;
-}
-
-.test-exit-done {
-    opacity: 0;
+.exit-done{
+    display: none;
 }
