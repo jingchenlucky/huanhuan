@@ -1,31 +1,43 @@
-import React, {useState} from 'react';
-import 'animate.css';
+import React, {Component} from 'react';
+import FadeTransition from './components/common/FadeTransition';
+import {TransitionGroup} from "react-transition-group";
 import {v4 as uuidv4} from 'uuid';
-import {TransitionGroup, CSSTransition} from 'react-transition-group';
-import './App.css'
 
-export default function App(props) {
-    console.log(uuidv4());
-    const [taskList, setTaskList] = useState([
-        {id: uuidv4(), name: '任务1'},
-        {id: uuidv4(), name: '任务2'}
-    ])
-    return (
-        <div>
-            <TransitionGroup>
-                {taskList.map(it => (<CSSTransition timeout={2000} key={it.id}>
-                    <div>{it.name}
-                        <button onClick={() => {
-                            setTaskList(taskList.filter(item => item.id !== it.id))
-                        }}>删除</button>
-                    </div>
+export default class App extends Component {
+    state = {
+        taskList: [{id: uuidv4(), name: '任务1'}, {id: uuidv4(), name: '任务2'}, {id: uuidv4(), name: '任务3'}]
+    }
 
-                </CSSTransition>))}
-            </TransitionGroup>
-            <button onClick={()=>{
-                var name=window.prompt("请输入名字");
-                setTaskList([...taskList,{id:uuidv4(),name}])
-            }}>添加</button>
-        </div>
-    );
+    render() {
+        return (
+            <div>
+                <TransitionGroup component="ul">
+                    {this.state.taskList.map(it => (
+                        <FadeTransition appear classNames="abc" key={it.id} timeout={500}>
+                            <li>{it.name}
+                                <button onClick={() => {
+                                    this.setState({
+                                        taskList: this.state.taskList.filter(item => (item.id !== it.id))
+                                    })
+
+                                }}>删除
+                                </button>
+                            </li>
+                        </FadeTransition>
+                    ))}
+
+                </TransitionGroup>
+
+                <button onClick={() => {
+                    var name = window.prompt("请输入任务名称")
+                    this.setState({
+                        taskList: [...this.state.taskList, {id: uuidv4(), name}]
+                    })
+
+                }}>
+                    添加按钮
+                </button>
+            </div>
+        );
+    }
 }
