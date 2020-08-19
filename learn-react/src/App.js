@@ -8,7 +8,7 @@ export default function App() {
         const timer = setInterval(() => {
             nRef.current--;
             setN(nRef.current);
-            if (nRef.current == 0) {
+            if (nRef.current === 0) {
                 clearInterval(timer);
             }
         }, 1000)
