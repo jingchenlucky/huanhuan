@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route,   } from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 //  匹配路径 /a
 function A() {
@@ -25,13 +25,11 @@ function D() {
 export default function App(props) {
     return (
         <Router>
-            {/*<Switch>*/}
-                <Route path="/a" component={A}>
-                    <h1 style={{color:'red'}}>必定会看到的内容</h1>
-                </Route>
+            <Switch>
+                <Route path="/a" component={A}/>
                 <Route path="/a/b" component={B}/>
                 <Route component={C}/>
-            {/*</Switch>*/}
+            </Switch>
 
         </Router>
 
