@@ -1,0 +1,12 @@
+.Header-content{
+    line-height: 60px;
+    padding: 0 10px;
+}
+.left{
+    float: left;
+
+    font-size: 23px;
+}
+.right{
+    float: right;
+}

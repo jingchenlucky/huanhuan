@@ -1,0 +1,23 @@
+.menu-content {
+    list-style: none;
+    padding: 0;
+    margin: 30px 0;
+    color: #fff;
+
+}
+
+.menu-content li {
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.menu-content a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.menu-content li:hover {
+    background: #fff;
+    color: #b1712a;
+}
