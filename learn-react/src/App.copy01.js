@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Link, NavLink, Redirect, Switch} from "react-router-dom"
+import {BrowserRouter as Router, Route, Link, NavLink} from "react-router-dom"
 import './App.css'
 
 // import Link from './Link';
@@ -33,12 +33,8 @@ export default function App(props) {
     return (
         <Router>
             <NavBar/>
-            <Switch>
-                <Route path="/a" component={A}></Route>
-                <Route path="/b" component={B}></Route>
-                <Redirect to="/a"/>
-            </Switch>
-
+            <Route path="/a" component={A}></Route>
+            <Route path="/b" component={B}></Route>
         </Router>
     );
 }
