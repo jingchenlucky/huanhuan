@@ -16,6 +16,7 @@
     /*background: green;*/
     height: calc(100% - 60px);
     display: flex;
+    overflow: auto;
 }
 .menu{
     width: 200px;
@@ -23,5 +24,6 @@
 }
 .main{
     width: calc(100% - 200px);
+    overflow: auto;
     /*background: yellow;*/
 }

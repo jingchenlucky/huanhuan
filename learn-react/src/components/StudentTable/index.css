@@ -1,0 +1,13 @@
+.tab {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    border-collapse: collapse;
+}
+.tab tr{
+    height: 30px;
+}
+
+.tab th, .tab td {
+    border: 1px solid #ccc;
+}
