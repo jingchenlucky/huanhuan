@@ -1,39 +1,37 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Link} from "react-router-dom"
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
-// import Link from './Link';
-
-function A() {
+function User({match}) {
+    console.log(match);
     return (
-        <div>组件A</div>
+        <div>
+            <h1>User组件固定区域</h1>
+            <p>
+                <Link to={`${match.url}/update`}>用户信息</Link>
+                <Link to={`${match.url}/pay`}>用户充值</Link>
+            </p>
+            <Route path={`${match.url}/update`} component={UserUpdate}></Route>
+            <Route path={`${match.url}/pay`} component={UserPay}></Route>
+        </div>
     )
 }
 
-function B() {
+function UserUpdate() {
     return (
-        <div>组件B</div>
+        <div>修改用户信息</div>
     )
 }
 
-function NavBar() {
+function UserPay() {
     return (
-        <>
-            <Link to="/a">去A页面</Link>
-            <Link to={{
-                pathname: '/b',
-                hash: '#abc',
-                search: '?a=1&b=2'
-            }}>去B页面</Link>
-        </>
+        <div>用户充值中心</div>
     )
 }
 
 export default function App(props) {
     return (
         <Router>
-            <NavBar/>
-            <Route path="/a" component={A}></Route>
-            <Route path="/b" component={B}></Route>
+            <Route path="/user" component={User}></Route>
         </Router>
     );
 }

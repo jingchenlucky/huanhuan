@@ -1,44 +1,42 @@
-import React from 'react';
-import {BrowserRouter as Router, Route, Link, NavLink, Redirect, Switch} from "react-router-dom"
-import './App.css'
+import React from 'react'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+import  routeConfig from "./RouteConfig"
 
-// import Link from './Link';
+function User({ match }) {
+    return <div>
+        <h1>User组件固定的区域</h1>
+        <p>
+            <Link to={routeConfig.user.update}>用户信息</Link>
+            <Link to={routeConfig.user.pay.root}>充值</Link>
+        </p>
+        <div style={{
+            width: 500,
+            height: 500,
+            background: "lightblue",
+            border: "2px solid",
+            margin: "0 auto"
+        }}>
+            {/* User组件变化的区域：根据地址的不同发生变化 */}
+            <Route path={routeConfig.user.update} component={UserUpdate} />
+            <Route path={routeConfig.user.pay.root} component={UserPay} />
+        </div>
 
-function A() {
-    return (
-        <div>组件A</div>
-    )
+    </div>
 }
 
-function B() {
-    return (
-        <div>组件B</div>
-    )
+function UserUpdate() {
+    return <h1>修改用户信息</h1>
 }
 
-function NavBar() {
-    return (
-        <>
-            <NavLink to="/a" activeClassName="selected" activeStyle={{background: '#ccc'}}>去A页面</NavLink>
-            <NavLink to={{
-                pathname: '/b',
-                hash: '#abc',
-                search: '?a=1&b=2'
-            }} activeClassName="selected" activeStyle={{background: '#ccc'}}>去B页面</NavLink>
-        </>
-    )
+function UserPay() {
+    return <h1>用户充值</h1>
 }
 
-export default function App(props) {
+export default function App() {
     return (
         <Router>
-            <NavBar/>
-            <Switch>
-                <Route path="/a" component={A}></Route>
-                <Route path="/b" component={B}></Route>
-                <Redirect to="/a"/>
-            </Switch>
-
+            <Route path={routeConfig.user.root} component={User} />
+            {/* 其他组件 */}
         </Router>
-    );
+    )
 }
