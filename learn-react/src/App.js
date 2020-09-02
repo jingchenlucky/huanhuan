@@ -1,42 +1,42 @@
-import React from 'react'
-import { BrowserRouter as Router, Route, Link } from "react-router-dom"
-import  routeConfig from "./RouteConfig"
+import React from 'react';
+import {BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom';
+import Home from './Home';
+import Login from './Login';
+import Personnal from './Personnal';
+import ProtectRoute from './ProtectRoute';
 
-function User({ match }) {
-    return <div>
-        <h1>User组件固定的区域</h1>
-        <p>
-            <Link to={routeConfig.user.update}>用户信息</Link>
-            <Link to={routeConfig.user.pay.root}>充值</Link>
-        </p>
-        <div style={{
-            width: 500,
-            height: 500,
-            background: "lightblue",
-            border: "2px solid",
-            margin: "0 auto"
-        }}>
-            {/* User组件变化的区域：根据地址的不同发生变化 */}
-            <Route path={routeConfig.user.update} component={UserUpdate} />
-            <Route path={routeConfig.user.pay.root} component={UserPay} />
-        </div>
-
-    </div>
-}
-
-function UserUpdate() {
-    return <h1>修改用户信息</h1>
-}
-
-function UserPay() {
-    return <h1>用户充值</h1>
-}
-
-export default function App() {
+export default function App(props) {
     return (
-        <Router>
-            <Route path={routeConfig.user.root} component={User} />
-            {/* 其他组件 */}
-        </Router>
-    )
+        <div>
+            <Router>
+                <div>
+                    <ul>
+                        <li>
+                            <Link to='/'>首页</Link>
+                        </li>
+                        <li>
+                            <Link to='/Login'>登录</Link>
+                        </li>
+                        <li>
+                            <Link to='/Personnal'>私人</Link>
+                        </li>
+                    </ul>
+                    <div>
+                        <Switch>
+                            <Route path="/login" component={Login}/>
+                            {/*渲染匹配后component对应组件*/}
+                            <ProtectRoute path="/personnal" component={Personnal}/>
+                            {/*渲染匹配后render返回内容；render和children区别：render是匹配后才会显示，children不论是否匹配都会显示*/}
+                            {/*<Route path="/personnal" render={(value) => {*/}
+                            {/*    console.log(value);*/}
+                            {/*    return <h1>123456</h1>*/}
+                            {/*}}/>*/}
+                            <Route path="/" component={Home}/>
+
+                        </Switch>
+                    </div>
+                </div>
+            </Router>
+        </div>
+    );
 }
