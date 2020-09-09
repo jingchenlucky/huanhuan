@@ -5,27 +5,33 @@ import {NavLink} from 'react-router-dom'
 export function NavBar() {
     return (
         <div className="header">
-            <NavLink to="/" >首页</NavLink>
-            <NavLink to="/news" >新闻</NavLink>
-            <NavLink to="/personal" >个人</NavLink>
+            <NavLink to="/" exact>首页</NavLink>
+            <NavLink to="/news" exact>新闻</NavLink>
+            <NavLink to="/personal" exact>个人</NavLink>
         </div>
     )
 }
 export function Home() {
     return(
-        <div className="home">首页</div>
+        <div className="page home">
+            <h1>首页</h1>
+        </div>
     )
 }
 
 export function News() {
     return(
-        <div className="news">新闻页</div>
+        <div className="page news">
+            <h1>新闻页</h1>
+        </div>
     )
 }
 
 export function Personal() {
     return(
-        <div className="personal">首页</div>
+        <div className="page personal">
+            <h1>个人</h1>
+        </div>
     )
 }
 
