@@ -10,6 +10,7 @@ function Login(props) {
             <div>仅做测试登录使用</div>
             <button onClick={() => {
                 const query = qs.parse(props.location.search);
+                loginInfo.login();
                 if (query.returnurl) {
                     props.history.push(query.returnurl);
                 }
