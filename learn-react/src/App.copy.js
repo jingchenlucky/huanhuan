@@ -1,10 +1,10 @@
 import React from 'react';
-import {Route, NavLink} from 'react-router-dom';
+// import * as Pages from './Page';
+import {BrowserRouter as Router, Route, NavLink} from 'react-router-dom';
 import './App.css'
-import RouteGuard from './RouteGuard';
-import resetScroll from './resetScroll'
+import withScroll from './withScroll'
 
-function Page1(props) {
+function Page1() {
     return <div className="page page1">
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam ex at fugiat, vero ratione ullam sed
         dignissimos nam pariatur iusto cum, quam eos ab vitae voluptas voluptate minus. Magnam in rerum, nihil
@@ -148,9 +148,8 @@ function Page1(props) {
     </div>
 }
 
-function Page2(props) {
-    return <div className="page page2"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam ex at fugiat,
-        vero
+function Page2() {
+    return <div className="page page2"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam ex at fugiat, vero
         ratione ullam sed dignissimos nam pariatur iusto cum, quam eos ab vitae voluptas voluptate minus. Magnam in
         rerum, nihil architecto excepturi tempore. Possimus sit laudantium tempore sint dolor doloremque aliquid! Ullam
         numquam accusantium officia eius. Nam tempora qui deleniti praesentium facilis quas earum similique reiciendis
@@ -291,23 +290,22 @@ function Page2(props) {
         quas magni recusandae possimus soluta laborum quidem facere hic mollitia exceptu</div>
 }
 
+const Page1WithScroll = withScroll(Page1);
+const Page2WithScroll = withScroll(Page2);
 
 function App(props) {
     return (
-        <RouteGuard onChange={(prevLocation, location) => {
-            console.log(prevLocation, location);
-            if (prevLocation !== location.pathname) {
-                resetScroll();
-            }
+        <div className="main">
+            <Router>
+                <Route path="/page1" component={Page1WithScroll}/>
+                <Route path="/page2" component={Page2WithScroll}/>
+                <div className="nav">
+                    <NavLink to="/page1">页面1</NavLink>
+                    <NavLink to="/page2">页面2</NavLink>
+                </div>
+            </Router>
 
-        }}>
-            <Route path="/page1" component={Page1}/>
-            <Route path="/page2" component={Page2}/>
-            <div className="nav">
-                <NavLink to="/page1">页面1</NavLink>
-                <NavLink to="/page2">页面2</NavLink>
-            </div>
-        </RouteGuard>
+        </div>
     );
 }
 
