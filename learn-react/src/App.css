@@ -1,33 +1,17 @@
-.page {
-    width: 1800px;
-    margin: 0 auto;
-    border: 2px solid;
-}
-
-.page1 {
-    background: lightblue;
-}
-
-.page2 {
-    background: lightgreen;
-}
-
-.nav {
-    position: fixed;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #008c8c;
-    /*color: #fff;*/
-    padding: 20px;
-}
 .nav a{
     text-decoration: none;
-    color: #fff;
-    margin: 20px 0;
-    font-size: 1.5em;
+    margin: 10px 20px;
+    font-size: 2em;
+    color: #000;
 }
-
 .nav a.active{
-    color: yellow;
+    color: red;
+}
+.container{
+    margin: 30px;
+}
+.container textarea{
+    width: 500px;
+    height: 200px;
+    font-size: 2em;
 }
