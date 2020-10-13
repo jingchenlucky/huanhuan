@@ -7,11 +7,10 @@ import {createAddUserAction,deleteUserAction} from './action/usersAction';
 const store = createStore(reducer);
 console.log("仓库store",store) ;
 
-const unListen=store.subscribe(()=>{
+store.subscribe(()=>{
     console.log("状态发生改变了,在分发过action之后运行");
 })
 store.subscribe(()=>{console.log(store.getState())});
-// unListen();  //取消监听
 store.dispatch(createAddUserAction({
     id:3,
     name:'用户3333',
