@@ -10,7 +10,7 @@ console.log("仓库store", store);
 
 // const unlisten = 
 store.subscribe(() => {
-  console.log("状态发生改变了,在分发过action之后运行");
+  console.log("状态发生改变了11,在分发过action之后运行");
 });
 store.subscribe(() => {
   console.log(store.getState());
