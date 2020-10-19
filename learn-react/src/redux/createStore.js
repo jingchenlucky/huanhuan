@@ -1,17 +1,5 @@
-/**
- * 判断一个对象是不是平面对象plain-object
- * @param {*} reducer
- * @param {*} defaultState
- */
-function isPlainObject(obj) {
-  if (typeof obj !== "object") {
-    return false;
-  }
-  return Object.getPrototypeOf(obj) === Object.prototype;
-}
-function getRandomString(length) {
-  return Math.random().toString(36).substr(2, length).split("").join(".");
-}
+import ActionTypes from "./utils/actionTypes"
+import isPlainObject from './utils/isPlainObject'
 /**
  * 实现createStore功能
  * @param {func} reducer
@@ -22,7 +10,7 @@ export default function (reducer, defaultState) {
     currentState = defaultState;
   const listeners = []; //定义一个监听器数组；
   //创建仓库时，需要分发一次初始的action
-  dispatch({ type: `@@redux/INIT${getRandomString(7)}` });
+  dispatch({ type: ActionTypes.INIT()});
   function dispatch(action) {
     if (!isPlainObject(action)) {
       //验证action必须是一个平面对象

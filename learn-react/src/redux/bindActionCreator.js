@@ -23,10 +23,10 @@ export default function (actionCreators, dispatch) {
  * 得到一个自动分发的action创建函数,增强函数
  */
 function getAutoDispatchActionCreator(actionCreator, dispatch) {
-   
     return function (...args) {
         console.log("argarg",args);
-        const action = actionCreator(...args)
+        const action = actionCreator(...args);
+        console.log("action",action);
         dispatch(action);
     }
 }
