@@ -1,4 +1,4 @@
-import { createStore, bindActionCreators, applyMiddleware } from "redux";
+import { createStore, bindActionCreators, applyMiddleware } from "../redux";
 // import { createStore, bindActionCreators } from "../redux";
 import reducer from "./reducer";
 import { createAddUserAction, deleteUserAction } from "./action/usersAction";
@@ -28,6 +28,7 @@ const logger1 = (store) => (nextDispatch) => (action) => {
 //   };
 // }
 function logger2(store) {
+  //返回dispatch 创建函数
   return function (nextDispatch) {
     //下面返回的函数，是最终要应用的dispatch函数
     return function (action) {

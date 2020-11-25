@@ -1,24 +1,34 @@
-import ActionTypes from "./utils/actionTypes"
-import isPlainObject from './utils/isPlainObject'
+import ActionTypes from './utils/actionTypes';
+import isPlainObject from './utils/isPlainObject';
 /**
  * 实现createStore功能
  * @param {func} reducer
  * @param {*} defaultState  默认状态
  */
-export default function (reducer, defaultState) {
+export default function createStore(reducer, defaultState, enhanced) {
+  //enhanced表示applymiddleware返回的函数
+  if (typeof defaultState === 'function') {
+    //第二个参数是应用中间件的函数返回值
+    enhanced = defaultState;
+    defaultState = undefined;
+  }
+  if (typeof enhanced === 'function') {
+    //进入applyMiddleWare的处理逻辑
+    return enhanced(createStore)(reducer, defaultState);
+  }
   let currentReducer = reducer,
     currentState = defaultState;
   const listeners = []; //定义一个监听器数组；
   //创建仓库时，需要分发一次初始的action
-  dispatch({ type: ActionTypes.INIT()});
+  dispatch({ type: ActionTypes.INIT() });
   function dispatch(action) {
     if (!isPlainObject(action)) {
       //验证action必须是一个平面对象
-      throw new TypeError("action must be plain-object");
+      throw new TypeError('action must be plain-object');
     }
     if (action.type === undefined) {
       //验证action必须有type属性
-      throw new TypeError("action must have type property");
+      throw new TypeError('action must have type property');
     }
     currentState = currentReducer(currentState, action); //reducer之后拿到新的状态
     //运行所有监听器（订阅者）
@@ -35,7 +45,8 @@ export default function (reducer, defaultState) {
   function subscribe(listener) {
     listeners.push(listener);
     let isRemove = false;
-    return function () {//返回取消监听的函数
+    return function() {
+      //返回取消监听的函数
       if (isRemove) {
         return;
       }
