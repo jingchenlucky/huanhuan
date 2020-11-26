@@ -24,9 +24,9 @@ export default function (actionCreators, dispatch) {
  */
 function getAutoDispatchActionCreator(actionCreator, dispatch) {
     return function (...args) {
-        console.log("argarg",args);
+        // console.log("argarg",args);
         const action = actionCreator(...args);
-        console.log("action",action);
+        // console.log("action",action);
         dispatch(action);
     }
 }

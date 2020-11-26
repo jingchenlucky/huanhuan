@@ -4,7 +4,6 @@ import compose from './compose'
  * @param  {...any} middlewares   所有的中间件
  */
 export default function(...middlewares) {
-    console.log(middlewares) 
   return function(createStore) {//返回创建仓库方式的函数
     return function(reducer, defaultState) {//返回的函数用于创建仓库
         const store=createStore(reducer,defaultState);
