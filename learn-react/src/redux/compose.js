@@ -1,4 +1,5 @@
 export default function compose(...funcs) {
+  // console.log("111111",args)
   if (funcs.length === 0) {
     return args => args; //如果没有要组合的函数，则返回的函数原封不动的返回参数
   } else if (funcs.length === 1) {
