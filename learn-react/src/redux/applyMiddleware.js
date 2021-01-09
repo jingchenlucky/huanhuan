@@ -9,7 +9,7 @@ export default function(...middlewares) {
         const store=createStore(reducer,defaultState);
         let dispatch=()=>{throw new Error("目前还不能使用dispatch")}
         const simpleStore={
-            dispatch:store.dispatch,
+            dispatch:(...args)=>dispatch(...args),
             getState:store.getState
         }
         //根据中间件数组，得到一个dispatch创建函数的数组
