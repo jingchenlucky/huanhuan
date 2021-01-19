@@ -30,13 +30,44 @@ export function setIsLoading(isLoading) {
   };
 }
 
-export function fetchStudents() {
-  return async function(dispatch, getState) {
-    dispatch(setIsLoading(true));
-    const condition = getState().students.condition;
-    const resp = await searchStudents(condition);
-    // console.log(resp);
-    dispatch(setStudentsAndTotal(resp.datas, resp.cont));
-    dispatch(setIsLoading(false));
-  };
+/**
+ * 使用redux-thunk,允许action是一个异步函数，如果是函数直接执行，不分发
+ */
+// export function fetchStudents() {
+//   return async function(dispatch, getState) {
+//     dispatch(setIsLoading(true));
+//     const condition = getState().students.condition;
+//     const resp = await searchStudents(condition);
+//     // console.log(resp);
+//     dispatch(setStudentsAndTotal(resp.datas, resp.cont));
+//     dispatch(setIsLoading(false));
+//   };
+// }
+
+/** 方式1:
+ * 由于使用了redux-promise，则允许action是一个promise,在promise中触发action，使用resolve
+ */
+// export function fetchStudents() {
+//   return new Promise(resolve => {
+//     setTimeout(() => {
+//       const action = setStudentsAndTotal(
+//         [
+//           { name: 'a', sex: 0 },
+//           { name: 'b', sex: 1 },
+//         ],
+//         2,
+//       );
+//       resolve(action);
+//     }, 3000);
+//   });
+// }
+
+/**
+ * 方式2:
+ * async函数本身返回的就是promise
+ * @param {} condition
+ */
+export async function fetchStudents(condition) {
+  const resp = await searchStudents(condition);
+  return setStudentsAndTotal(resp); //返回的是resolve,相当于触发action
 }
