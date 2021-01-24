@@ -1,7 +1,7 @@
 import { searchStudents } from '../../../services/student';
 export const actionTypes = {
   //设置学生查询结果数组和总数
-  setStudentsAndTotal: Symbol('setStudentsAndTotal'),
+  setStudentsAndTotal: 'setStudentsAndTotal',
   setIsLoading: Symbol('setIsLoading'),
 };
 
@@ -62,12 +62,26 @@ export function setIsLoading(isLoading) {
 //   });
 // }
 
+// /**
+//  * 方式2:
+//  * async函数本身返回的就是promise
+//  * @param {} condition
+//  */
+// export async function fetchStudents(condition) {
+//   const resp = await searchStudents(condition);
+//   return setStudentsAndTotal(resp); //返回的是resolve,相当于触发action
+// }
+
 /**
- * 方式2:
- * async函数本身返回的就是promise
- * @param {} condition
+ * 将promise resolve的结果作为payload
+ * @param {*} condition
  */
 export async function fetchStudents(condition) {
-  const resp = await searchStudents(condition);
-  return setStudentsAndTotal(resp); //返回的是resolve,相当于触发action
+  return {
+    type: actionTypes.setStudentsAndTotal,
+    payload: searchStudents(condition).then(resp => ({
+      datas: resp.datas,
+      total: resp.cont,
+    })),
+  };
 }
