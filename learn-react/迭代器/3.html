@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function createIterator(total) {
+        return {
+          i: 1,
+          next() {
+            var obj = {
+              value: this.i > total ? undefined : Math.random(),
+              done: this.i > total,
+            };
+            this.i++;
+            return obj;
+          },
+        };
+      }
+      var iterator=createIterator(3);
+      var next=iterator.next();
+      while(!next.done){
+          //若当前迭代的数据并不是迭代的结束
+
+        console.log(next.value);
+        next=iterator.next();
+      }
+    </script>
+  </body>
+</html>

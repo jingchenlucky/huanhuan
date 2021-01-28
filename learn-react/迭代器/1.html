@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var iterator={
+            i:1,
+            total:3,
+            next(){
+                var obj= {
+                    value:this.i>3?undefined:Math.random(),
+                    done:this.i>3,
+                }
+                this.i++;
+                return obj;
+            }
+          
+        }
+    </script>
+</body>
+</html>

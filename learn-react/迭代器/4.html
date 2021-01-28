@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const obj = {
+        [Symbol.iterator]: function createIterator() {
+          var total = 3;
+          return {
+            i: 1,
+            next() {
+              var obj = {
+                value: this.i > total ? undefined : Math.random(),
+                done: this.i > total,
+              };
+              this.i++;
+              return obj;
+            },
+          };
+        },
+      };
+      //for of原理如下：
+      var iterator = obj[Symbol.iterator]();
+      var result = iterator.next();
+      while (!result.done) {
+          //有数据
+        const item = result.value;
+        console.log('item22222', item);//执行循环体
+        result = iterator.next();
+      }
+      //   for (const item of obj) {
+      //     console.log('item1111', item);
+      //   }
+    </script>
+  </body>
+</html>
