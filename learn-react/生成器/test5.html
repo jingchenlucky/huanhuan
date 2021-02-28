@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //下面的函数是一个生成器函数，用于创建生成器
+      function* createGenerator() {
+        try {
+          console.log('生成器函数的函数题体-开始');
+          let result = yield 1; //{value: 1, done: false}
+          // 将1做为第一次迭代的值，在yield这里暂停，并没有将1复制给result
+          //result的赋值，是在第二次迭代，generator.next(XXX),将XXX赋值给result
+          console.log('生成器函数的函数题体-运行1', result);
+          result = yield 2;
+          console.log('生成器函数的函数题体-运行2', result);
+          result = yield 3;
+          console.log('生成器函数的函数题体-运行3', result);
+          return '结束';
+        } catch {
+            console.log("报错了！！！！！")
+            yield '错'
+        }
+      }
+      var generator = createGenerator(); //调用后返回，生成器
+      //generator.next(); 
+      //generator.throw(new Error('报错了'));
+    </script>
+  </body>
+</html>

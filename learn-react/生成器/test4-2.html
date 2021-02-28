@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 遇到异步的情况，ES6中使用promise处理较为麻烦，ES7中使用async和await较为方便，在es7出现之前，大部分使用生成器处理异步问题。
+      function asyncGetData() {
+        return new Promise(resolve => {
+          setTimeout(() => {
+            resolve('缓缓');
+          }, 2000);
+        });
+      }
+      function* task() {
+        console.log('开始获取数据');
+        const data = yield asyncGetData();
+        // yield asyncGetData();这里拿到的迭代数据为{value: Promise, done: false}
+        //value是一个promise对象，当执行resolve拿到数据的时候，触发promise.then。将data传入，并通过generator.next(data)将数据赋值给data,然后打印数据
+        console.log(`获取到到数据为${data}`);
+        const data2 = yield asyncGetData();
+        console.log('又获取到了数据：', data2);
+        const data3 = yield 1;
+        console.log('又获取到了数据：', data3);
+      }
+      //运行一个生成器任务  自动循环 执行next迭代直到结束
+      function run(generatorFunction) {
+        const generator = generatorFunction();
+        next();
+        /**
+         * 封装了generator的next方法，进行下一次迭代
+         */
+        function next(nextValue) {
+          const result = generator.next(nextValue);
+          if (result.done) {
+            //迭代结束了
+            return;
+          }
+          const value = result.value;//迭代拿到的数据
+          if (typeof value.then === 'function') {
+            //迭代的数据是一个promise
+            value.then(data => next(data));
+          } else {
+            next(value);
+          }
+        }
+      }
+      run(task);
+      // const generator = task();
+      // const result = generator.next(); //{value: Promise, done: false}
+      // result.value.then(data => generator.next(data));
+    </script>
+  </body>
+</html>

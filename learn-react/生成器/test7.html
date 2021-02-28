@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function* g2() {
+        console.log('g2-开始');
+        let result = yield 'g1';
+        console.log('g2-运行1');
+        result = yield 'g2';
+        return 'g2结束'
+      }
+      //下面的函数是一个生成器函数，用于创建生成器
+      function* createGenerator() {
+        console.log('生成器函数的函数题体-开始');
+        let result = yield 1; 
+        // let g = g2();//生成器函数特点1，调用生成器函数，返回一个生成器，不会执行函数体。函数体执行受生成器在外部控制
+        // console.log('gggggg', g);
+        result=yield* g2();// 这里的result为g2生成器函数的返回值，不是next参数
+        console.log('生成器函数的函数题体-运行1', result);
+        result = yield 2;
+        console.log('生成器函数的函数题体-运行2', result);
+        result = yield 3;
+        console.log('生成器函数的函数题体-运行3', result);
+        return '结束';
+      }
+      var generator = createGenerator(); //调用后返回，生成器
+    </script>
+  </body>
+</html>
