@@ -6,7 +6,7 @@ import {
   asyncIncrease,
   asyncDecrease,
 } from './action/count/index';
-store.dispatch(change({ key: '12313', page: 2 }));
+// store.dispatch(change({ key: '12313', page: 2 }));
 // store.dispatch(increase());
 window.decrease = function() {
   store.dispatch(decrease());
