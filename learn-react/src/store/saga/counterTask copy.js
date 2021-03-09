@@ -46,7 +46,7 @@ function* asyncDecrease() {
 }
 
 export default function*() {
-  yield fork(asyncIncrease);//这里使用yield take(actionTypes.asyncIncrease);会阻塞进程， yield指令不会，会另开一个进程
+  yield fork(asyncIncrease);//这里使用yield take(actionTypes.asyncIncrease);会阻塞进程， fork指令不会，会另开一个进程
   yield takeEvery(actionTypes.asyncDecrease, asyncDecrease);
   console.log('正在监听asyncIncrease、asyncDecrease'); //
 }

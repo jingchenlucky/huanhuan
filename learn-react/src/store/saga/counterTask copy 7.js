@@ -29,6 +29,6 @@ export default function*() {
   yield fork(autoTask);
   console.log("正在监听autoIncrease。。。")
 }
-//停止的第二种方式 利用take的阻塞，当监听完autoIncrease之后，紧接着只监听stopAutoIncrease
+//停止的第三种方式 利用take的阻塞，当监听完autoIncrease之后，紧接着只监听stopAutoIncrease
 //所以 就算多次触发autoIncrease  也没开启多个任务，因为autoIncrease只监听一次，就去监听stopAutoIncrease了
 //任务调度流程在assets/2.jpg

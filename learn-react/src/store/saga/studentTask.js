@@ -8,7 +8,7 @@ import {
 function mockStudents(condition, callBack) {
   console.log('mockStudents参数', condition);
   setTimeout(() => {
-    if (Math.random() > 0.1) {
+    if (Math.random() > 0.5) {
       callBack(null, {
         cont: 78,
         datas: [
