@@ -8,7 +8,7 @@ import { searchStudents } from '../../services/student';
 function mockStudents(condition, callBack) {
   console.log('mockStudents参数', condition);
   setTimeout(() => {
-    if (Math.random() > 0.1) {
+    if (Math.random() > 0.5) {
       callBack(null, {
         cont: 78,
         datas: [
@@ -28,7 +28,7 @@ function* fetchStudents() {
   yield put(setIsLoading(true));
   const condition = yield select(state => state.students.condition);
   try {
-    let result = yield cps(mockStudents, condition);
+    let result = yield cps(mockStudents, condition);//拿到回调函数中的数据
     yield put(setStudentsAndTotal(result.datas, result.cont));
   } catch (err) {
     console.log('errrrr', err);
