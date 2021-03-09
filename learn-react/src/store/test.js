@@ -5,6 +5,8 @@ import {
   decrease,
   asyncIncrease,
   asyncDecrease,
+  autoIncrease,
+  stopAutoIncrease
 } from './action/count/index';
 import { fetchStudents } from './action/student/searchResult';
 // store.dispatch(change({ key: '12313', page: 2 }));
@@ -20,9 +22,15 @@ window.increase = function() {
 window.asyncIncrease = function() {
   store.dispatch(asyncIncrease());
 };
-window.asyncIncrease = function() {
+window.asyncDecrease = function() {
   store.dispatch(asyncDecrease());
 };
-window.fetchStudents=function(){
+window.fetchStudents = function() {
   store.dispatch(fetchStudents());
-}
+};
+window.autoIncrease = function() {
+  store.dispatch(autoIncrease());
+};
+window.stopAutoIncrease = function() {
+  store.dispatch(stopAutoIncrease());
+};

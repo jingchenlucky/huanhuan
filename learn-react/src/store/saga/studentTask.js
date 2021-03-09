@@ -1,10 +1,10 @@
-import { takeEvery, put, call, select, cps } from 'redux-saga/effects';
+import { takeEvery, put, select, cps } from 'redux-saga/effects';
 import {
   actionTypes,
   setIsLoading,
   setStudentsAndTotal,
 } from '../action/student/searchResult';
-import { searchStudents } from '../../services/student';
+// import { searchStudents } from '../../services/student';
 function mockStudents(condition, callBack) {
   console.log('mockStudents参数', condition);
   setTimeout(() => {
