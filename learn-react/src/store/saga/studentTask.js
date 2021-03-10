@@ -1,6 +1,6 @@
 import { takeEvery, put, select, cps } from 'redux-saga/effects';
 import {
-  actionTypes,
+  fetchStudents,
   setIsLoading,
   setStudentsAndTotal,
 } from '../action/student/searchResult';
@@ -22,7 +22,7 @@ function mockStudents(condition, callBack) {
   }, 1000);
 }
 
-function* fetchStudents() {
+function* fetchStudentsFunc() {
   console.log('异步fetchStudents被触发');
   //设置为加载中
   yield put(setIsLoading(true));
@@ -37,6 +37,6 @@ function* fetchStudents() {
   }
 }
 export default function*() {
-  yield takeEvery(actionTypes.fetchStudents, fetchStudents);
+  yield takeEvery(fetchStudents.toString(), fetchStudentsFunc);
   console.log('正在监听学生的fetchStudents...');
 }

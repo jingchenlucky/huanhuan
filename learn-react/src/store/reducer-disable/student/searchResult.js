@@ -1,4 +1,4 @@
-import {actionTypes} from '../../action/student/searchResult';
+import {setStudentsAndTotal,setIsLoading} from '../../action/student/searchResult';
 const initialState = {
   datas: [],
   total: 0,

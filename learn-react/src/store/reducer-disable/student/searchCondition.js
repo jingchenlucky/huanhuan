@@ -1,4 +1,4 @@
-import { actionTypes } from '../../action/student/searchCondition';
+import { change } from '../../action/student/searchCondition';
 
 const initialState = {
   key: '',
@@ -9,7 +9,7 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case actionTypes.change:
+    case change.toString():
       return { ...state, ...payload };
     default:
       return state;
