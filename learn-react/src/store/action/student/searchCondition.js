@@ -1,5 +1,5 @@
 export const actionTypes = {
-  change: Symbol('change'),
+  change: 'CHANGE',
 };
 
 export function change(newCondition) {
