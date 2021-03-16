@@ -7,13 +7,15 @@ import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './saga';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import history from './history';
+import { routerMiddleware } from 'connected-react-router';
+const routerMid = routerMiddleware(history);
 
 const sagaMid = createSagaMiddleware(); //创建一个saga的中间件
 
 const store = createStore(
   reducer,
-  composeWithDevTools(applyMiddleware(sagaMid, logger)),
+  composeWithDevTools(applyMiddleware(routerMid, sagaMid, logger)),
 );
-console.log('++++++', store.getState());
 sagaMid.run(rootSaga); //启动saga任务   生成器函数体执行收到外部生成器控制
 export default store;
