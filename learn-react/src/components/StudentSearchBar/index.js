@@ -17,7 +17,6 @@ export default class StudentSearchBar extends Component {
     }
 
     handleChange = (e) => {
-        console.log("dianjile ")
         this.setState({
             sex: +e.target.value
         })
