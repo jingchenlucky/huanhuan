@@ -48,7 +48,7 @@ function mapDispatchToProps(dispatch) {
     },
     onAsyncDecrease: () => {
       dispatch({
-        type: 'counter/asyncIncrease',
+        type: 'counter/asyncDecrease',
       });
     },
     onAsyncIncrease: () => {
