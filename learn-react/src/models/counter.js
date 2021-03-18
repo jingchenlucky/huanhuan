@@ -46,7 +46,7 @@ export default {
         });
       };
     },
-    resizeDecrease({ dispatch, history }) {
+    resizeDecrease({ dispatch, history }) {//这里的history就是传入的history对象，和react-router提供在上下文中的history不一样
       history.listen(() => {
         dispatch({
           type: 'decrease',
