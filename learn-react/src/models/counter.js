@@ -22,14 +22,13 @@ export default {
     *asyncIncrease(action, { call, put }) {
       //第二个参数是各种令对象，进行解构，但没有delay，下面手动实现delay效果
       yield call(delay, 2000); //delay是一个promise，这里会等异步结束才会往下，所以有延迟效果，因为
-      console.log('++asyncIncrease++++');
+      // throw new Error('测试的错误');
       yield put({
         type: 'increase', //在模型内部不需要加命名空间
       });
     },
     *asyncDecrease(action, { call, put }) {
       yield call(delay, 2000);
-      console.log('+++asyncDecrease+++');
       yield put({
         type: 'decrease',
       });
