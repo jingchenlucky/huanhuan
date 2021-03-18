@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { connect } from 'dva';
+import Modal from './components/common/Modal';
 function Counter(props) {
   const inp = useRef();
   return (
@@ -20,12 +21,18 @@ function Counter(props) {
           加上
         </button>
       </p>
+      {props.isLoading && (
+        <Modal>
+          <div style={{ fontSize: '2em' }}>加载中....</div>
+        </Modal>
+      )}
     </>
   );
 }
 function mapStateToProps(state) {
   return {
     number: state.counter,
+    isLoading: state.loading.models.counter,
   };
 }
 function mapDispatchToProps(dispatch) {
@@ -52,10 +59,10 @@ function mapDispatchToProps(dispatch) {
       });
     },
     onAsyncIncrease: () => {
-        dispatch({
-          type: 'counter/asyncIncrease',
-        });
-      },
+      dispatch({
+        type: 'counter/asyncIncrease',
+      });
+    },
   };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);
