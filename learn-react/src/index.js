@@ -14,9 +14,9 @@ import { createBrowserHistory } from 'history';
 //这里传入的history才是在仓库counter中监听的histoy
 const app = dva({
   history: createBrowserHistory(),
-  initialState: {
-    counter: 123,
-  },
+  // initialState: {
+  //   counter: 123,
+  // },
   // onError(err, dispatch) {
   //   console.log('抛出错误信息', err.message, dispatch);
   // },
@@ -32,13 +32,13 @@ const app = dva({
   //     return newState;
   //   };
   // },
-  onEffect(oldEffect, sagaEffects, model, actionType) {
-    return function*(action) {
-      console.log('即将执行副作用代码');
-      yield oldEffect(action);
-      console.log('已经执行副作用代码');
-    };
-  },
+  // onEffect(oldEffect, sagaEffects, model, actionType) {
+  //   return function*(action) {
+  //     console.log('即将执行副作用代码');
+  //     yield oldEffect(action);
+  //     console.log('已经执行副作用代码');
+  //   };
+  // },
   // extraReducers: {
   //   abc(state = 123, action) {
   //     return state;
