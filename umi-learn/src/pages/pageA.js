@@ -3,7 +3,7 @@ import React from 'react'
 export default function page1() {
     return (
         <div>
-            <h1>页面2</h1>
+            <h1>页面A</h1>
         </div>
     )
 }
