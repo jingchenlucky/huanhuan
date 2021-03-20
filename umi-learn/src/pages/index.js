@@ -1,9 +1,15 @@
+/**
+ * title: 登录页
+ * 
+ */
 import React from 'react'
-
-export default function index() {
+function index() {
     return (
         <div>
-            <h1>首页</h1>
-        </div>
+            首 页
+        </div> 
     )
 }
+index.wrappers=['@/routes/HandleTitle']
+index.title='首页'
+export default index;
