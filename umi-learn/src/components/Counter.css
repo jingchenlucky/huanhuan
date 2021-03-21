@@ -1,0 +1,13 @@
+.counterBox {
+  text-align: center;
+}
+.counterBox button {
+  margin: 0 30px;
+}
+/* 
+不用写层级关系.counterBox .title
+css-module中给改成了唯一的类名
+*/
+.title {
+  color: red;
+}

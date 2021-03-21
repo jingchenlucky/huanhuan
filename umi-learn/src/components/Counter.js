@@ -1,12 +1,16 @@
 import React from 'react';
 import { connect } from 'dva';
+import styles from './Counter.css';
+import buttonStyles from '@/assets/css/button.css';
+
+// console.log('++++++', styles);
 
 function Counter(props) {
   return (
-    <div>
-      <div>{props.number}</div>
-      <button onClick={props.onIncrease}>加1</button>
-      <button onClick={props.onDecrease}>减1</button>
+    <div className={styles.counterBox}>
+      <div className={styles.title}>{props.number}</div>
+      <button className={buttonStyles.button} onClick={props.onIncrease}>加1</button>
+      <button className={buttonStyles.button} onClick={props.onDecrease}>减1</button>
     </div>
   );
 }
