@@ -17,6 +17,6 @@ function welcome({ history }) {
     </div>
   );
 }
-welcome.wrappers = ['@/routes/PrivateRouter','@/routes/HandleTitle'];
+welcome.wrappers = ['@/routes/PrivateRouter'];
 welcome.title = '欢迎页';
 export default welcome;

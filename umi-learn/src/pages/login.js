@@ -31,6 +31,5 @@ function login() {
     </div>
   );
 }
-login.wrappers=['@/routes/HandleTitle']
 login.title='登录页'
 export default login;

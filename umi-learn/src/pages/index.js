@@ -10,6 +10,5 @@ function index() {
         </div> 
     )
 }
-index.wrappers=['@/routes/HandleTitle']
 index.title='首页'
 export default index;
