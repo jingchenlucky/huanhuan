@@ -1,14 +1,14 @@
 /**
- * title: 登录页
- * 
+ * title: 首页
  */
+import { getAllStudents } from "@/services/student"
 import React from 'react'
-function index() {
+
+export default function index() {
+    getAllStudents().then(resp => console.log(resp));
     return (
         <div>
-            首 页
-        </div> 
+            <h1>首页</h1>
+        </div>
     )
 }
-index.title='首页'
-export default index;
