@@ -6,16 +6,13 @@ export default function index() {
   return (
     <ul className={styles.nav}>
       <li>
-        <NavLink to="/" />
-        后台管理首页
+        <NavLink exact to="/" activeClassName={styles.active}>后台管理系统</NavLink>
       </li>
       <li>
-        <NavLink to="/student" />
-        学生查询
+        <NavLink exact to="/student"activeClassName={styles.active}>学生查询</NavLink>
       </li>
       <li>
-        <NavLink to="/student/add" />
-        添加学生
+        <NavLink exact to="/student/add" activeClassName={styles.active}>添加学生</NavLink>
       </li>
     </ul>
   );
