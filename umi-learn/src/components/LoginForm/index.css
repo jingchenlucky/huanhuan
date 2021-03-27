@@ -1,0 +1,28 @@
+.login {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.login input {
+  width: 350px;
+  height: 30px;
+  outline: none;
+  border: 1px solid #ccc;
+  padding: 0 10px;
+  font-size: 14px;
+}
+.item{
+    margin:15px 0;
+}
+.item button{
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    height: 30px;
+    outline: none;
+    cursor: pointer;
+    border-radius: 4px;
+    background: #008c8c;
+    color:#fff
+}

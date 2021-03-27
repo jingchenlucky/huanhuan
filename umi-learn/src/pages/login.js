@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import LoginForm from '@/components/LoginForm'
 
 export default function login() {
     return (
         <div>
-            登录页
+          <LoginForm/>
         </div>
     )
 }
