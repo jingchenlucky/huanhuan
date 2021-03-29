@@ -1,7 +1,7 @@
 import React,{useRef} from 'react';
 import styles from './index.css';
 
-export default function index() {
+export default function index(props) {
     const txtLoginId=useRef();
     const txtLoginPwd=useRef();
   return (
@@ -16,9 +16,9 @@ export default function index() {
       </div>
       <div className={styles.item}>
         <button onClick={()=>{
-            const id=txtLoginId.current.value;
-            const pwd=txtLoginPwd.current.value;
-            console.log("2131231313",id,pwd)
+            const loginId=txtLoginId.current.value;
+            const loginPwd=txtLoginPwd.current.value;
+            props.onLogin&& props.onLogin(loginId,loginPwd);
         }}>登录</button>
       </div>
     </div>

@@ -1,10 +1,10 @@
 import React from 'react';
-import LoginForm from '@/components/LoginForm'
+import LoginFormContainer from '@/components/containers/LoginFormContainer'
 
 export default function login() {
     return (
         <div>
-          <LoginForm/>
+          <LoginFormContainer/>
         </div>
     )
 }
