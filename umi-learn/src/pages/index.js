@@ -5,4 +5,4 @@ export default function index() {
   // getAllStudents().then(res => console.log(res));
   return <div>欢迎页</div>;
 }
-index.wrapper = ['@/routes/PrivateRouter'];
+index.wrappers = ['@/routes/PrivateRouter'];
