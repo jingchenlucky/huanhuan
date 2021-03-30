@@ -29,4 +29,15 @@ export default {
       yield put({ type: 'setLoginUser', payload: null });
     },
   },
+  subscriptions:{
+    //在一开始时 将本地存储同步到state,刷新页面后页面重新运行，state会被初始化
+    syncLocalstorage({dispatch}){
+      const loginId=localStorage.getItem('loginId');
+      if(loginId){
+        dispatch({
+          type: 'setLoginUser', payload: loginId 
+        })
+      }
+    }
+  }
 };
