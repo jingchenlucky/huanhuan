@@ -1,0 +1,19 @@
+{
+  "name": "antd-learn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "a.js",
+  "scripts": {
+    "start": "umi dev",
+    "build": "umi build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ant-design/icons": "^4.6.2",
+    "@umijs/preset-react": "^1.8.2",
+    "mockjs": "^1.1.0"
+  }
+}

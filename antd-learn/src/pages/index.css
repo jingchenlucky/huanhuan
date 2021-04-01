@@ -1,0 +1,9 @@
+.content{
+    height: calc(100% - 200px);
+}
+.header{
+    background: cadetblue;
+}
+.footer{
+    background: red;
+}
