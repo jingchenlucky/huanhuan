@@ -6,7 +6,7 @@ class Tick extends Component {
         this.state={
             number:props.number
         }
-        console.log(props);
+        // console.log(props);
         const timer=setInterval(()=>{
             this.setState({
                 number:this.state.number-1
@@ -21,7 +21,7 @@ class Tick extends Component {
 
     render() {
         return (
-            <div>
+            <div onClick={this.props.onClick}>
                 倒计时:{this.state.number}
             </div>
         );

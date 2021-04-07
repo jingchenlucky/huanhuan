@@ -14,6 +14,9 @@
                 }} number={10}/>
 以上这样写this不会有问题，this指向外层对对象.若箭头函数过于复杂，写在行内不方便,提出来
 方法1：bind    this.handleOnOver=this.handleOnOver.bind(this);
+handleClick原先原型__proto__上；
+this.handleClick.bind(this)拿到一个新的函数，将handleClick放在对象上；new TickControl()
+
 方法2：箭头函数handleOnOver
 让handleover函数不在原型上，在对象上
 
