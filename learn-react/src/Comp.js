@@ -19,7 +19,7 @@ class Comp extends Component {
             //所有状态全部更新完成，并且重新渲染后进行
             console.log("state更新完成",this.state.n);
         })
-        this.setState(cur=>{
+        this.setState(cur=>{//cur代表上一次改变之后的状态
             return {
                 n:cur.n+1
             }
@@ -44,3 +44,5 @@ class Comp extends Component {
 }
 
 export default Comp;
+
+

@@ -11,10 +11,9 @@ class Comp extends Component {
         this.setState({
             n:this.state.n+1
         },()=>{
-            //状态完成改变之后触发，该回调运行在render之后
+            //状态完成改变/重新渲染 之后触发，该回调运行在render之后
             console.log(this.state.n);
         })
-        console.log("state。n",this.state.n);//没有重新渲染，说明目前状态还没有改变
     }
     render() {
         console.log("重新渲染");
