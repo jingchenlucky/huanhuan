@@ -4,11 +4,14 @@ class NewLifeCycle extends Component {
     state={
         n:0
     }
-    // static getDerivedStateFromProps(nextProps,prevState){
-    //     console.log("getDerivedStateFromProps");
-    //     console.log(nextProps, prevState);
-    //     return null;
-    // }
+    static getDerivedStateFromProps(nextProps,prevState){
+        console.log("getDerivedStateFromProps");
+        console.log(nextProps, prevState);
+        return null;
+    }
+    componentDidMount(){
+        console.log("虚拟dom挂载成真实dom")
+    }
     getSnapshotBeforeUpdate(prevProps, prevState) {
         console.log("getSnapshotBeforeUpdate",prevProps, prevState);
         return 123;
