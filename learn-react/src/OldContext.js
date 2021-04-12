@@ -53,12 +53,12 @@ class OldContext extends Component {
     static childContextTypes = types;
     state = {
         a: 123,
-        b: "werwer"
+        b: "字符串String"
     }
 
     // 得到上下文中的数据
     getChildContext() {
-        console.log("(重新)获取上下文中的数据");
+        console.log("(重新1)获取上下文中的数据");
         return {
             a: this.state.a,
             b: this.state.b,
