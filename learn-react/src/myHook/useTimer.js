@@ -9,6 +9,7 @@ export default function useTimer(func, duration) {
     useEffect(() => {
         const timer = setInterval(func, duration);
         return () => {
+            console.log("清理函数")
             clearInterval(timer);
         }
     }, [])
