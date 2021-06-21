@@ -20,7 +20,7 @@ window.increase = function() {
 window.asyncIncrease = function() {
   store.dispatch(asyncIncrease());
 };
-window.asyncIncrease = function() {
+window.asyncDecrease = function() {
   store.dispatch(asyncDecrease());
 };
 window.fetchStudents=function(){
