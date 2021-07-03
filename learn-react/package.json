@@ -7,7 +7,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "animate.css": "^3.7.2",
-    "connected-react-router": "^6.5.2",
+    "connected-react-router": "^6.9.1",
     "history": "^4.9.0",
     "is-promise": "^4.0.0",
     "loadash": "^1.0.0",
