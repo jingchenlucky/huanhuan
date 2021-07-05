@@ -1,7 +1,8 @@
 import React from 'react';
 import { NavLink } from 'umi';
 import './index.css';
-import '@/global.less';
+//全局样式不用导入
+// import '@/global.less';
 
 export default function index(props) {
   return (
