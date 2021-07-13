@@ -37,7 +37,7 @@ function MoveBlock(props) {
         //     console.log("清理函数");
         // }
         return stop;
-    },[props.left,props.right])
+    },[props.left,props.top])
     return (
         <div ref={ref} style={{width: 100, height: 100, background: 'red', position: 'fixed'}}>
 
