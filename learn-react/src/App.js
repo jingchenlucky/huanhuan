@@ -4,7 +4,7 @@ import React from 'react';
 import matchPath from './react-router/matchPath';
 
 function App(props) {
-  const result=  matchPath('/news/:year?/:month?/:day',{exact:true});
+  const result=  matchPath('/news/:year?/:month?/:day','/news/2021/08/20',{exact:true});
   console.log("========",result)
     return (
         <div>123231</div>
