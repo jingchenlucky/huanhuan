@@ -1,21 +1,13 @@
 import React from 'react';
-import * as Pages from './Page';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
-import './App.css'
+// import * as Pages from './Page';
+// import { BrowserRouter as Router, Route } from 'react-router-dom';
+import matchPath from './react-router/matchPath';
 
 function App(props) {
+  const result=  matchPath('/news/:year?/:month?/:day',{exact:true});
+  console.log("========",result)
     return (
-        <div className="main">
-            <Router>
-                <Pages.NavBar></Pages.NavBar>
-                <div className="page-container">
-                    <Route path="/" component={Pages.Home} exact/>
-                    <Route path="/news" component={Pages.News} exact/>
-                    <Route path="/personal" component={Pages.Personal} exact/>
-                </div>
-
-            </Router>
-        </div>
+        <div>123231</div>
     );
 }
 
