@@ -1,14 +1,10 @@
-import React from 'react';
-// import * as Pages from './Page';
-import { BrowserRouter as Router } from 'react-router-dom';
-import matchPath from './react-router/matchPath';
+import React from 'react'
+import { BrowserRouter } from "./react-router-dom"
 
-function App(props) {
-  // const result=  matchPath('/news/:year?/:month?/:day','/news/2021/08/20',{exact:true});
-  // console.log("========",result)
+export default function App() {
     return (
-        <Router></Router>
-    );
+        <BrowserRouter>
+        asdfasdasf
+        </BrowserRouter>
+    )
 }
-
-export default App;
