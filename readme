@@ -1,8 +1,1 @@
-下载老师源码：
-1 git clone +源码地址
-2把路径切换到 DuYi-React文件夹下，然后git branch -r查看所有的分支，git checkout origin/1-1.React概述（此处为分支）即可切换代码
-
-
-自己代码
-切换分支切到huanhuan路径下，不用去learn-react
-跑项目要去learn-react路径下  npm start
+具体学习总结在代码和笔记中
